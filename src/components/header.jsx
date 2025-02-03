@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 export default function Header() {
   const words = [
     "We are RPLG 1!",
-    "Welcome to our web!",
+    "Welcome to our website!",
     "Let's find something amazing!",
   ];
   const [text, setText] = useState("");

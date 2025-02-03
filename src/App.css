@@ -14,6 +14,7 @@ body {
   margin: 0;
 }
 
+.header,
 .home,
 .about,
 .portfolio,
@@ -63,7 +64,7 @@ body {
 }
 
 .header {
-  height: 70vh;
+  height: 100vh;
   background-color: var(--primary);
   display: flex;
   align-items: center;
@@ -389,4 +390,5 @@ body {
   background-size: cover; /* Memastikan gambar menutupi seluruh area */
   background-repeat: no-repeat; /* Menghindari pengulangan gambar */
   vertical-align: middle;
+  border-radius: 50%;
 }
