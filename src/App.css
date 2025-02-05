@@ -69,6 +69,18 @@ body {
   display: column;
 }
 
+.snap-scroll {
+  scroll-snap-type: y mandatory; /* Snapping vertikal */
+  overflow-y: scroll;
+  height: 100vh; /* Mengisi seluruh layar */
+  scroll-behavior: smooth;
+}
+
+.header,
+.home {
+  scroll-snap-align: start;
+}
+
 .navbar {
   padding-top: 0.5em;
   padding-bottom: 0.5em;
@@ -134,7 +146,7 @@ body {
   display: inline-block;
   width: 40px; /* Sesuaikan ukuran */
   height: 40px; /* Sesuaikan ukuran */
-  background: url("./assets/favicon.ico") no-repeat center center;
+  background: url("./assets/logo.jpg") no-repeat center center;
   background-size: cover; /* Pastikan gambar sesuai */
   border-radius: 50%; /* Membuat ikon bulat */
   vertical-align: middle; /* Menyesuaikan dengan teks */
@@ -339,7 +351,7 @@ body {
   .hero-image {
     width: 170px !important;
     height: 170px !important;
-    size: 60%; 
+    size: 60%;
   }
 
   .nav {
