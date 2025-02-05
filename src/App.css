@@ -1,5 +1,5 @@
 :root {
-  --primary: rgba(47, 47, 47, 1);
+  --primary: rgba(25, 25, 25, 1);
   --secondary: rgb(241, 129, 37);
   --shades: rgba(238, 238, 238, 1);
 }
@@ -388,19 +388,20 @@ body {
   height: 200px;
   background-color: #2e3436; /* Warna latar belakang terminal */
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 0 10px rgba(70, 70, 70, 0.7);
   font-family: "Courier New", Courier, monospace; /* Font terminal */
   color: #ffffff; /* Warna teks */
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  border: 1px solid white;
 }
 
 /* Header terminal */
 .terminal-header {
   display: flex;
   align-items: center;
-  background-color: #1d1f1d;
+  background-color: #373837;
   padding: 5px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -439,7 +440,7 @@ body {
   padding: 10px;
   overflow-y: auto;
   background-color: #1e2422; /* Latar belakang body terminal */
-  color: #00ff00; /* Warna teks terminal */
+  color: #ebebeb; /* Warna teks terminal */
 }
 
 .terminal-body pre {
