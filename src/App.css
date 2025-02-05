@@ -195,15 +195,15 @@ body {
 
 @media screen and (max-width: 799px) {
   .terminal-container {
-    width: 300px !important;
-    height: 200px;
+    width: 220px !important;
+    height: 160px;
   }
 
-  /* .hero-image {
-    width: 120px !important;
-    height: 120px !important;
+  .hero-image {
+    width: 170px !important;
+    height: 170px !important;
     size: 60%; 
-  } */
+  }
 
   .nav {
     position: fixed;
