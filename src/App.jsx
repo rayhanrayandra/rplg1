@@ -11,7 +11,6 @@ function App() {
 
   return (
     <>
-    <div className="snap-scroll">
     <Header />
     <Navbar />
     <Home />
@@ -19,7 +18,6 @@ function App() {
     <Portfolio />
     <Contact />
     <Footer />
-    </div>
     </>
   )
 }
