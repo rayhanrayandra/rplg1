@@ -76,10 +76,10 @@ body {
   scroll-behavior: smooth;
 }
 
-.header,
+/* .header,
 .home {
   scroll-snap-align: start;
-}
+} */
 
 .navbar {
   padding-top: 0.5em;
@@ -344,14 +344,14 @@ body {
 
 @media screen and (max-width: 799px) {
   .terminal-container {
-    width: 220px !important;
-    height: 160px;
+    width: 180px !important;
+    height: 140px !important;
   }
 
   .hero-image {
-    width: 170px !important;
-    height: 170px !important;
-    size: 60%;
+    width: 140px !important;
+    height: 140px !important;
+    size: 60% !important;
   }
 
   .nav {
