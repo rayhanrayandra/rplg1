@@ -13,13 +13,11 @@ function App() {
     <>
     <Header />
     <Navbar />
-    <main>
     <Home />
     <About />
     <Portfolio />
     <Contact />
     <Footer />
-    </main>
     </>
   )
 }

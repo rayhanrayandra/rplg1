@@ -43,17 +43,23 @@ export default function Header() {
     <header className="header">
       <div className="container">
         <div className="hero-section">
-          <div className="typing-demo">
-            <span>Hello,</span>
-            <br></br>
-            <p>
-              {text}
-              <span className="cursor">|</span>
-            </p>
+          <div class="terminal-container">
+            <div class="terminal-header">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+              <span class="title">user@guess:~$</span>
+            </div>
+            <div class="terminal-body">
+              <pre>
+                $ echo "Hello World"<br></br>{text}
+                <span className="cursor">|</span>
+              </pre>
+            </div>
           </div>
+          <div className="hero-image"></div>
         </div>
       </div>
-          <div className="hero-image"></div>
     </header>
   );
 }
