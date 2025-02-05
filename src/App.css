@@ -271,12 +271,7 @@ body {
   overflow-y: auto;
   background-color: #1e2422; /* Latar belakang body terminal */
   color: #ebebeb; /* Warna teks terminal */
-}
-
-.terminal-body pre {
-  margin: 0;
-  font-size: 15px;
-  white-space: pre-wrap; /* Agar teks di-wrap jika terlalu panjang */
+  font-size: 14px;
 }
 
 .hero-section {
