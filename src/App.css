@@ -70,11 +70,14 @@ body {
 }
 
 .snap-scroll {
-  scroll-snap-type: y mandatory; /* Snapping vertikal */
+  scroll-snap-type: y mandatory;
+  -webkit-scroll-snap-type: y mandatory; /* Safari fix */
   overflow-y: scroll;
-  height: 100vh; /* Mengisi seluruh layar */
+  height: 100vh;
   scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch; /* Bantu agar smooth di iOS */
 }
+
 
 /* .header,
 .home {
@@ -345,7 +348,16 @@ body {
 @media screen and (max-width: 799px) {
   .terminal-container {
     width: 180px !important;
-    height: 140px !important;
+    height: 160px !important;
+  }
+
+
+  .dot {
+    width: 10px !important;
+    height: 10px !important;
+    border-radius: 50% !important;
+    margin-right: 5px !important;
+    display: inline-block !important;
   }
 
   .hero-image {
