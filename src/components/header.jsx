@@ -52,7 +52,7 @@ export default function Header() {
             </div>
             <div class="terminal-body">
               <pre>
-                $ echo "Hello World"<br></br>{text}
+                $ echo "Hello World"<br></br>&gt;&gt;&gt; {text}
                 <span className="cursor">|</span>
               </pre>
             </div>
