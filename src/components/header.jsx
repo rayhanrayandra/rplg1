@@ -43,7 +43,7 @@ export default function Header() {
     <header className="header">
       <div className="container">
         <div className="hero-section">
-          <div class="terminal-container">
+          <div class="terminal-container animate-silde-right">
             <div class="terminal-header">
               <span class="dot red"></span>
               <span class="dot yellow"></span>

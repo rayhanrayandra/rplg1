@@ -22,37 +22,6 @@ body {
   height: 100vh;
 }
 
-.header,
-.home,
-.about,
-.portfolio,
-.contact,
-.footer {
-  position: relative;
-}
-
-.header h1,
-.home h1,
-.about h1,
-.portfolio h1,
-.contact h1,
-.footer h1 {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.header h1::before,
-.home h1::before,
-.about h1::before,
-.portfolio h1::before,
-.contact h1::before,
-.footer h1::before {
-  content: "#";
-}
-
 .header h1,
 .footer h1 {
   color: var(--shades);
@@ -215,7 +184,7 @@ body {
 /* Container untuk terminal */
 .terminal-container {
   width: 400px;
-  height: 200px;
+  height: 250px;
   background-color: #2e3436; /* Warna latar belakang terminal */
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(70, 70, 70, 0.7);
@@ -474,10 +443,31 @@ body {
 .snap-scroll {
   height: 100vh;
   overflow-y: scroll;
+  scroll-behavior: smooth;
   scroll-snap-type: y mandatory; /* Snap scroll secara vertikal */
 }
 
 .header, .home , .about, .portfolio, .contact {
   scroll-snap-align: start;
   height: 100vh; /* Pastikan setiap elemen mengisi layar penuh */
+}
+
+.home{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-container {
+  display: flex;
+  justify-content: center;
+  width: 300px;
+  
+}
+
+.home-container {
+  display: flex;
+  justify-content: space-between;
+  height :180px ;
+  padding: 40px;
 }
