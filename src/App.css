@@ -499,4 +499,5 @@ body {
 
 .header, .home {
   scroll-snap-align: start;
+  height: 100vh; /* Pastikan setiap elemen mengisi layar penuh */
 }
