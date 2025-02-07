@@ -266,6 +266,8 @@ body {
 
 /* Body terminal */
 .terminal-body {
+  display: flex;
+  justify-content: space-between;
   flex-grow: 1;
   padding: 10px;
   overflow-y: auto;
@@ -283,9 +285,8 @@ body {
 }
 
 .hero-image {
-  align-items: end;
-  width: 200px;
-  height: 200px;
+  width: 50px;
+  height: 50px;
   background: url("./assets/logo.jpg");
   background-size: cover;
   background-repeat: no-repeat;
@@ -293,7 +294,7 @@ body {
   border-radius: 50%;
   transform-style: preserve-3d;
   animation: spin 5.1s linear infinite;
-  border: 3px solid white;
+  border: 1px solid white;
 }
 
 @keyframes spin {
