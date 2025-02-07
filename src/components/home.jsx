@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import maskotImage from '../assets/maskot.jpeg';
 
 function Home() {
   const text = "Kami adalah RPLG 1 angkatan 2022-2025";
@@ -49,7 +50,7 @@ function Home() {
           <h1 className="typing-text">{displayText}<span className="cursor">|</span></h1>
         </div>
         <div className="image-container">
-          <img src="./assets/profile.jpg" alt="Profile" className="profile-image" />
+        <img src={maskotImage} alt="Profile" className="profile-image" style={{ width: '120px', height: 'auto' }}/>
         </div>
       </div>
     </section>
