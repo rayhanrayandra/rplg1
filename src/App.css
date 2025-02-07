@@ -276,10 +276,10 @@ body {
 
 .hero-section {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: 85px;
-  gap: 20px;
+  width: 100%;
 }
 
 .hero-image {
@@ -326,28 +326,7 @@ body {
 }
 
 @media screen and (max-width: 799px) {
-  .terminal-container {
-    width: 180px !important;
-    height: 160px !important;
-  }
-
-
-  .dot {
-    width: 10px !important;
-    height: 10px !important;
-    border-radius: 50% !important;
-    margin-right: 5px !important;
-    display: inline-block !important;
-  }
-
-  .hero-image {
-    width: 140px !important;
-    height: 140px !important;
-    size: 60% !important;
-  }
-
   .nav {
-
     display: none;
   }
 

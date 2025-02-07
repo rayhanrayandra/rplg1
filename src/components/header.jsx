@@ -55,7 +55,6 @@ export default function Header() {
                 <span className="cursor">|</span>
             </div>
           </div>
-          <div className="hero-image"></div>
         </div>
       </div>
     </header>
