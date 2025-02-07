@@ -497,7 +497,7 @@ body {
   scroll-snap-type: y mandatory; /* Snap scroll secara vertikal */
 }
 
-.header, .home {
+.header, .home , .about, .portfolio, .contact {
   scroll-snap-align: start;
   height: 100vh; /* Pastikan setiap elemen mengisi layar penuh */
 }

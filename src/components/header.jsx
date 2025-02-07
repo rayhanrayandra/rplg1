@@ -51,7 +51,7 @@ export default function Header() {
               <span class="title">user@guess:~$</span>
             </div>
             <div class="terminal-body">
-                $ echo "Hello World"<br></br>&gt;&gt; {text}
+                $ echo "Scroll Ke bawah"<br></br>&gt;&gt; {text}
                 <span className="cursor">|</span>
             </div>
           </div>
