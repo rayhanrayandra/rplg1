@@ -347,15 +347,8 @@ body {
   }
 
   .nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    z-index: -1;
-    background-color: var(--primary);
-    opacity: 0;
-    transition: all 0.2s ease;
+
+    display: none;
   }
 
   .nav .nav__items {
@@ -449,6 +442,19 @@ body {
   }
 }
 
+#nav:checked ~ .nav {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  background-color: var(--primary);
+  opacity:  0;
+  transition: all 0.2s ease;
+}
+
 #nav:checked + .nav__open {
   transform: rotate(45deg);
   position: fixed;
@@ -456,7 +462,7 @@ body {
 
 #nav:checked + .nav__open i {
   background-color: var(--shades);
-  transition: transform 0.2s ease;
+  transition: transform 0.5s ease;
 }
 
 #nav:checked + .nav__open i:nth-child(1) {
@@ -483,4 +489,14 @@ body {
 #nav:checked ~ .nav ul li a {
   opacity: 1;
   transform: translateY(0);
+}
+
+.snap-scroll {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory; /* Snap scroll secara vertikal */
+}
+
+.header, .home {
+  scroll-snap-align: start;
 }
