@@ -47,7 +47,7 @@ function Home() {
     <section className="home">
       <div className="home-container">
         <div ref={textRef} className="text-container">
-          <h1 className="typing-text">{displayText}<span className="cursor">|</span></h1>
+          <h3 className="typing-text">{displayText}<span className="cursor">|</span></h3>
         </div>
         <div className="image-container">
         <img src={maskotImage} alt="Profile" className="profile-image" style={{ width: '120px', height: 'auto' }}/>
