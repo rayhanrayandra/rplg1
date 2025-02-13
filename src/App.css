@@ -182,9 +182,13 @@ body {
 }
 
 .hero-text{
+  font-weight: bolder;;
+  color: var(--primary) !important;
+  -webkit-text-stroke: 1px #ffffff;
   font-size: 3.5rem;
-  width: 400px;
+  width: 600px;
   height: 250px;
+  
 }
 /* Container untuk terminal */
 .terminal-container {
@@ -254,8 +258,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 85px;
-  width: 100%;
+  padding-left: 30px;
+  padding-right: 30px;
+  width: 80%;
 }
 
 .hero-image {
@@ -308,6 +313,19 @@ body {
   .terminal-container{
     display: none;
   } 
+
+  .hero-section{
+    height: auto;
+    padding: 10px;
+  }
+
+  .hero-text{
+    font-weight: 900;;
+    font-size: 5.5rem;
+    width: auto;
+    height: auto;
+    
+  }
 
   .nav .nav__items {
     position: absolute;

@@ -4,12 +4,13 @@ export default function Header() {
   const words1 = [
     "We are RPLG 1!",
     "Welcome to our website!",
-    "Scroll to see more!",
+    "Scroll down to explore",
   ];
   const words2 = [
-    "Hello, World!",
     "apt update && apt upgrade",
-    "sudo su",
+    'node -v' ,
+    "npm i",
+    "npm run dev",
   ];
 
   // State untuk teks pada <h1>
@@ -22,23 +23,21 @@ export default function Header() {
   const [index2, setIndex2] = useState(0);
   const [isDeleting2, setIsDeleting2] = useState(false);
 
-  // State untuk melacak scroll
-  const [isScrolling, setIsScrolling] = useState(false);
-
-  const typingSpeed1 = 50;
-  const deletingSpeed1 = 20;
+  const typingSpeed1 = 60;
+  const deletingSpeed1 = 30;
   const pauseBeforeDelete1 = 3000;
-  
-  const typingSpeed2 = 90;
-  const deletingSpeed2 = 25;
-  const pauseBeforeDelete2 = 5000;
+
+  const typingSpeed2 = 50;
+  const deletingSpeed2 = 30;
+  const pauseBeforeDelete2 = 6000;
+
 
   // Efek mengetik untuk teks di <h1>
   useEffect(() => {
     const currentWord = words1[index1];
     let timeout;
 
-    if (!isDeleting1 && !isScrolling) {
+    if (!isDeleting1) {
       if (text1.length < currentWord.length) {
         timeout = setTimeout(() => {
           setText1(currentWord.substring(0, text1.length + 1));
@@ -46,7 +45,7 @@ export default function Header() {
       } else {
         timeout = setTimeout(() => setIsDeleting1(true), pauseBeforeDelete1);
       }
-    } else if (!isScrolling) {
+    } else {
       if (text1.length > 0) {
         timeout = setTimeout(() => {
           setText1(currentWord.substring(0, text1.length - 1));
@@ -58,14 +57,14 @@ export default function Header() {
     }
 
     return () => clearTimeout(timeout);
-  }, [text1, isDeleting1, index1, isScrolling]);
+  }, [text1, isDeleting1, index1]);
 
   // Efek mengetik untuk teks di terminal
   useEffect(() => {
     const currentWord = words2[index2];
     let timeout;
 
-    if (!isDeleting2 && !isScrolling) {
+    if (!isDeleting2) {
       if (text2.length < currentWord.length) {
         timeout = setTimeout(() => {
           setText2(currentWord.substring(0, text2.length + 1));
@@ -73,7 +72,7 @@ export default function Header() {
       } else {
         timeout = setTimeout(() => setIsDeleting2(true), pauseBeforeDelete2);
       }
-    } else if (!isScrolling) {
+    } else {
       if (text2.length > 0) {
         timeout = setTimeout(() => {
           setText2(currentWord.substring(0, text2.length - 1));
@@ -85,27 +84,14 @@ export default function Header() {
     }
 
     return () => clearTimeout(timeout);
-  }, [text2, isDeleting2, index2, isScrolling]);
-
-  // Menangani scroll untuk menghentikan animasi
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolling(true);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  }, [text2, isDeleting2, index2]);
 
   return (
     <header className="header">
       <div className="container">
         <div className="hero-section">
           <h1 className="hero-text">
-            Hi, <span>{text1}</span>
+            Hi, <div>{text1}</div>
           </h1>
           <div className="terminal-container">
             <div className="terminal-header">
@@ -116,7 +102,7 @@ export default function Header() {
             </div>
             <div className="terminal-body">
               <div className="text-terminal">
-                $ node app.js<br></br>&gt;&gt; {text2}
+                $ cd c:\users\rplg1\desktop\<br></br>&gt;&gt; {text2}
                 <span className="cursor">|</span>
               </div>
               {/* <div className="hero-image"></div> */}
