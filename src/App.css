@@ -181,6 +181,11 @@ body {
   }
 }
 
+.hero-text{
+  font-size: 3.5rem;
+  width: 400px;
+  height: 250px;
+}
 /* Container untuk terminal */
 .terminal-container {
   width: 400px;
@@ -299,6 +304,10 @@ body {
   .nav {
     display: none;
   }
+
+  .terminal-container{
+    display: none;
+  } 
 
   .nav .nav__items {
     position: absolute;
