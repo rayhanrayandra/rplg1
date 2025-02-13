@@ -6,11 +6,13 @@ import Portfolio from './components/portfolio'
 import Contact from './components/contact'
 import Footer from './components/footer'
 import Header from './components/header'
+import BackgroundAnimated from './components/background-animated'
 
 function App() {
 
   return (
     <>
+            
     <div className="snap-scroll">
     <Header />
     <Navbar />
@@ -19,7 +21,10 @@ function App() {
     <Portfolio />
     <Contact />
     <Footer />
-    </div>
+    <BackgroundAnimated />
+    </div >
+
+    
     </>
   )
 }
