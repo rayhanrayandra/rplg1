@@ -3,12 +3,12 @@ import { useState, useEffect } from "react";
 export default function Header() {
   const words1 = [
     "We are RPLG 1!",
-    "Welcome to our website!",
+    "Welcome to our web!",
     "Scroll down to explore",
   ];
   const words2 = [
     "apt update && apt upgrade",
-    'node -v' ,
+    "node -v",
     "npm i",
     "npm run dev",
   ];
@@ -30,7 +30,6 @@ export default function Header() {
   const typingSpeed2 = 50;
   const deletingSpeed2 = 30;
   const pauseBeforeDelete2 = 6000;
-
 
   // Efek mengetik untuk teks di <h1>
   useEffect(() => {
@@ -90,9 +89,10 @@ export default function Header() {
     <header className="header">
       <div className="container">
         <div className="hero-section">
-          <h1 className="hero-text">
-            Hi, <div>{text1}</div>
-          </h1>
+          <div className="hero-text">
+            <div className="hero-title">Hi,</div>
+            <div className="hero-subtitle">{text1}</div>
+          </div>
           <div className="terminal-container">
             <div className="terminal-header">
               <span className="dot red"></span>
