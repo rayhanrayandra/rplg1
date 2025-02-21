@@ -7,10 +7,9 @@ export default function Header() {
     "Scroll down to explore",
   ];
   const words2 = [
-    "apt update && apt upgrade",
-    "node -v",
-    "npm i",
-    "npm run dev",
+    "console.log('let\'s find your experience')",
+    "print('Follow IG RPLG1!')",
+    "echo 'scroll to explore'",
   ];
 
   // State untuk teks pada <h1>
@@ -27,8 +26,8 @@ export default function Header() {
   const deletingSpeed1 = 30;
   const pauseBeforeDelete1 = 3000;
 
-  const typingSpeed2 = 50;
-  const deletingSpeed2 = 30;
+  const typingSpeed2 = 15;
+  const deletingSpeed2 = 15;
   const pauseBeforeDelete2 = 6000;
 
   // Efek mengetik untuk teks di <h1>

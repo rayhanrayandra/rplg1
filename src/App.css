@@ -129,22 +129,6 @@ body {
   color: var(--secondary);
 }
 
-.nav__item:nth-child(1) .nav__link::before {
-  content: "1. ";
-}
-
-.nav__item:nth-child(2) .nav__link::before {
-  content: "2. ";
-}
-
-.nav__item:nth-child(3) .nav__link::before {
-  content: "3. ";
-}
-
-.nav__item:nth-child(4) .nav__link::before {
-  content: "4. ";
-}
-
 .container {
   display: flex;
   flex-wrap: wrap;
@@ -307,6 +291,9 @@ body {
   .nav__items {
     display: flex;
   }
+  .nav{
+    justify-content: center !important;
+  }
 
   .navbar {
     flex-direction: column;
@@ -315,7 +302,7 @@ body {
 
   .navbar {
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
   }
 }
 
@@ -346,7 +333,7 @@ body {
     font-weight: 900;;
     font-size: 5rem;
     width: auto;
-    height: auto;
+    height: 260px;
     
   }
 
@@ -495,7 +482,7 @@ body {
   height: 100vh;
   overflow-y: scroll;
   scroll-behavior: smooth;
-  scroll-snap-type: y mandatory; /* Snap scroll secara vertikal */
+  scroll-snap-type: y proximity; /* Snap scroll secara vertikal */
 }
 
 .header, .home , .about, .portfolio, .contact {
