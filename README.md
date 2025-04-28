@@ -1,8 +1,22 @@
-# React + Vite
+# 🎉 Award-Winning Immersive Minecraft Portfolio 🎉
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**[Live Site](http://woanminecraftfolio.com/)**
 
-Currently, two official plugins are available:
+This repo contains code of a an immersive three.js website portfolio!! This website won some awards! See them here:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [FWA of the Day](https://thefwa.com/cases/educational-minecraft-folio)
+- [Awwwards Honorable Mention](https://www.awwwards.com/sites/educational-minecraft-folio)
+- [CSSDA Special Kudios and Best UI/UX/Innovation Awards](https://www.cssdesignawards.com/sites/educational-minecraft-folio/46808/)
+
+![Home page screenshot](public/media/og/og-image.webp?raw=true "Home page screenshot")
+
+## Instructions
+
+```
+npm install
+npm run dev
+```
+
+## ❤️ Inspo!!! ❤️
+
+- [House Design](https://youtu.be/lkJ8zbYotGQ)

@@ -1,32 +1,20 @@
-import './App.css'
-import Navbar from './components/navbar'
-import Home from './components/home'
-import About from './components/about'
-import Portfolio from './components/portfolio'
-import Contact from './components/contact'
-import Footer from './components/footer'
-import Header from './components/header'
-import BackgroundAnimated from './components/background-animated'
+import "./App.scss";
+import Experience from "./Experience/Experience";
+import Modal from "./components/Modal/Modal";
+import AudioToggleButton from "./components/AudioToggleButton/AudioToggleButton";
+import LoadingScreen from "./components/LoadingScreen/LoadingScreen";
+import InfoButton from "./components/InfoButton/InfoButton";
 
 function App() {
-
   return (
     <>
-            
-    <div className="snap-scroll">
-    <Header />
-    <Navbar />
-    <Home />
-    <About />
-    <Portfolio />
-    <Contact />
-    <Footer />
-    <BackgroundAnimated />
-    </div >
-
-    
+      <LoadingScreen />
+      <AudioToggleButton />
+      <InfoButton />
+      <Modal />
+      <Experience />
     </>
-  )
+  );
 }
 
 export default App;
