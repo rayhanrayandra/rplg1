@@ -10,7 +10,7 @@ const Navigation = () => {
         { label: 'About', href: '#about' },
         { label: 'Our Journey', href: '#journey' },
         { label: 'Gallery', href: '#gallery' },
-        { label: 'Connect', href: '#social' },
+        { label: 'Connect', href: '#connect' },
         { label: 'NGL Box', href: '#ngl' },
     ];
 
