@@ -1,22 +1,16 @@
-# 🎉 Award-Winning Immersive Minecraft Portfolio 🎉
+# React + Vite
 
-**[Live Site](http://woanminecraftfolio.com/)**
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-This repo contains code of a an immersive three.js website portfolio!! This website won some awards! See them here:
+Currently, two official plugins are available:
 
-- [FWA of the Day](https://thefwa.com/cases/educational-minecraft-folio)
-- [Awwwards Honorable Mention](https://www.awwwards.com/sites/educational-minecraft-folio)
-- [CSSDA Special Kudios and Best UI/UX/Innovation Awards](https://www.cssdesignawards.com/sites/educational-minecraft-folio/46808/)
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-![Home page screenshot](public/media/og/og-image.webp?raw=true "Home page screenshot")
+## React Compiler
 
-## Instructions
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-```
-npm install
-npm run dev
-```
+## Expanding the ESLint configuration
 
-## ❤️ Inspo!!! ❤️
-
-- [House Design](https://youtu.be/lkJ8zbYotGQ)
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.

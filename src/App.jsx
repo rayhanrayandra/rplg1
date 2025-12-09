@@ -1,19 +1,25 @@
-import "./App.scss";
-import Experience from "./Experience/Experience";
-import Modal from "./components/Modal/Modal";
-import AudioToggleButton from "./components/AudioToggleButton/AudioToggleButton";
-import LoadingScreen from "./components/LoadingScreen/LoadingScreen";
-import InfoButton from "./components/InfoButton/InfoButton";
+import { ThemeProvider } from './context/ThemeContext';
+import Navigation from './components/Navigation';
+import Hero from './components/Hero';
+import About from './components/About';
+import Contact from './components/Contact';
+import Footer from './components/Footer';
+import Journey from './components/Journey';
 
 function App() {
   return (
-    <>
-      <LoadingScreen />
-      <AudioToggleButton />
-      <InfoButton />
-      <Modal />
-      <Experience />
-    </>
+    <ThemeProvider>
+      <div className="min-h-screen">
+        <Navigation />
+        <main>
+          <Hero />
+          <About />
+          <Journey />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
+    </ThemeProvider>
   );
 }
 
