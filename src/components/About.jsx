@@ -23,25 +23,27 @@ const About = () => {
 
                         <div className="space-y-4 mb-8">
                             <p className="text-gray-600 dark:text-dark-text-secondary">
-                                We didn’t all start from the same place. Some of us arrived with big
-                                dreams, some with uncertainty, and some without a clear path at all.
-                                Yet our different journeys converged in one classroom—where strangers
-                                slowly became a family, bound by curiosity and the desire to create.
+                                Kita semua mulai dari titik yang beda-beda. Ada yang datang bawa mimpi
+                                segede langit, ada yang masih ragu, ada juga yang belum tau mau ke mana.
+                                Tapi langkah-langkah itu akhirnya ketemu di satu ruang kelas—tempat di
+                                mana orang asing pelan-pelan jadi keluarga, disatukan rasa penasaran dan
+                                keinginan buat sama-sama bikin sesuatu.
                             </p>
 
                             <p className="text-gray-600 dark:text-dark-text-secondary">
-                                Here we learned more than syntax and frameworks. We learned how to
-                                fail and try again, how to lend a hand when someone is stuck, and how
-                                collaboration turns small ideas into something meaningful. Late-night
-                                debugging sessions, nervous presentations, and shared victories taught
-                                us resilience—and how to grow together.
+                                Di sini kita belajar lebih dari sekadar sintaks dan framework. Kita
+                                belajar gimana rasanya gagal, nyoba lagi, bantu teman yang lagi kejebak
+                                error, dan gimana kolaborasi bisa ngubah ide receh jadi sesuatu yang
+                                berarti. Begadang bareng, presentasi deg-degan, sampe tawa kenceng tiap
+                                fitur akhirnya jalan—semua itu ngajarin kita buat tahan banting dan
+                                tumbuh bareng-bareng.
                             </p>
 
                             <p className="text-gray-600 dark:text-dark-text-secondary">
-                                This classroom became our safe space: a place where ideas were born,
-                                mistakes were accepted, and confidence was built step by step. We leave
-                                not just with skills, but with memories, friendships, and the courage
-                                to keep building—one line of code at a time.
+                                Kelas ini jadi tempat aman buat kita: ruang di mana ide lahir, salah
+                                itu wajar, dan percaya diri dibangun pelan-pelan. Kita pulang bukan cuma
+                                bawa skill, tapi juga kenangan, keluarga kecil, dan keberanian buat
+                                terus berkarya—satu baris kode, satu langkah dalam hidup.
                             </p>
                         </div>
 
@@ -72,33 +74,33 @@ const About = () => {
                                 <div>
                                     <h3 className="text-xl font-bold mb-1">Experience</h3>
                                     <p className="text-gray-600 dark:text-dark-text-secondary text-sm">
-                                        3 years learning, building, and growing together
+                                        3 tahun belajar, ngebangun, dan tumbuh bareng
                                     </p>
                                 </div>
                             </div>
 
                             <div className="space-y-4">
                                 <div className="border-l-2 border-gray-300 dark:border-gray-700 pl-4">
-                                    <h4 className="font-bold">Software Engineering Class Journey</h4>
+                                    <h4 className="font-bold">Perjalanan Kelas Software Engineering</h4>
                                     <p className="text-gray-600 dark:text-dark-text-secondary text-sm">
                                         SMKN 6 Pekanbaru • 2022 – 2025
                                     </p>
                                     <ul className="text-gray-600 dark:text-dark-text-secondary text-sm mt-2 space-y-1 list-disc ml-4">
                                         <li>
-                                            Began together as hopeful beginners—uncertain, curious, and eager
-                                            to learn.
+                                            Mulai bareng sebagai pemula—penuh harap, penasaran, kadang bingung,
+                                            tapi selalu siap belajar.
                                         </li>
                                         <li>
-                                            Built collaborative projects that tested our creativity, patience,
-                                            and teamwork.
+                                            Bikin project bareng yang nguji kreativitas, kesabaran, dan cara
+                                            kita kerja sebagai tim.
                                         </li>
                                         <li>
-                                            Faced long nights, broken code, and tight deadlines—and learned how
-                                            to support one another through every challenge.
+                                            Ketemu malam-malam panjang, kode yang ngeyel, dan deadline yang
+                                            ngejar—tapi kita belajar buat saling nge-backup.
                                         </li>
                                         <li>
-                                            Grew from students into a team capable of turning ideas into
-                                            meaningful digital experiences.
+                                            Dari siswa biasa, pelan-pelan berubah jadi tim yang bisa ngubah
+                                            ide jadi pengalaman digital yang hidup.
                                         </li>
                                     </ul>
                                 </div>
@@ -114,34 +116,35 @@ const About = () => {
                                 <div>
                                     <h3 className="text-xl font-bold mb-1">Education</h3>
                                     <p className="text-gray-600 dark:text-dark-text-secondary text-sm">
-                                        Formal education & our shared journey
+                                        Pendidikan formal & perjalanan kita bareng
                                     </p>
                                 </div>
                             </div>
 
                             <div className="space-y-4">
                                 <div className="border-l-2 border-gray-300 dark:border-gray-700 pl-4">
-                                    <h4 className="font-bold">SMKN 6 Pekanbaru – Software Engineering</h4>
+                                    <h4 className="font-bold">SMKN 6 Pekanbaru – Rekayasa Perangkat Lunak</h4>
                                     <p className="text-gray-600 dark:text-dark-text-secondary text-sm">
                                         2022 – 2025
                                     </p>
 
                                     <ul className="text-gray-600 dark:text-dark-text-secondary text-sm mt-2 space-y-1 list-disc ml-4">
                                         <li>
-                                            Joined SMKN 6 Pekanbaru in 2022 and embarked on a three-year journey
-                                            of learning and discovery.
+                                            Masuk tahun 2022 dan mulai perjalanan tiga tahun penuh belajar,
+                                            ketawa, dan eksplorasi.
                                         </li>
                                         <li>
-                                            Homeroom teacher through every semester: <strong>Mrs. Rofiqoh, S.Pd</strong>,
-                                            who guided, pushed, and believed in us even when we doubted ourselves.
+                                            Wali kelas dari awal sampe akhir: <strong>Bu Rofiqoh, S.Pd</strong> —
+                                            yang selalu jadi sosok penuntun, penyabar, dan percaya sama kita
+                                            bahkan pas kita sendiri masih ragu.
                                         </li>
                                         <li>
-                                            Class Leaders: Grade 10 — <strong>Rayhan Qolbi Rayandra</strong>; Grade 11 &amp;
-                                            12 — <strong>Haris Adrian</strong>.
+                                            Ketua kelas: Kelas 10 — <strong>Rayhan Qolbi Rayandra</strong>;
+                                            kelas 11 & 12 — <strong>Haris Adrian</strong>.
                                         </li>
                                         <li>
-                                            Graduated in 2025, carrying with us not just knowledge but memories,
-                                            friendships, and the courage to keep building.
+                                            Lulus tahun 2025, bawa pulang bukan cuma ilmu tapi juga cerita,
+                                            keluarga, dan keberanian buat ngadepin dunia nyata.
                                         </li>
                                     </ul>
                                 </div>
