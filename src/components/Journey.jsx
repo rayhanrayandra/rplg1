@@ -16,32 +16,45 @@ const Journey = () => {
     const projects = [
         {
             id: 1,
-            title: "Pentas Seni — Merayakan Kreativitas Tanpa Batas",
-            description: "Sebuah perjalanan penuh tawa, sorak, dan cahaya panggung. Momen ketika semua orang menunjukkan bakat terbaiknya—menari, menyanyi, drama, hingga spontanitas yang nggak direncanakan tapi justru paling dikenang. Sebuah malam di mana rasa bangga dan kebersamaan terasa nyata",
-            image: "/images/pentas_seni.jpg",
-            year: "2022",
+            title: "Pertama Kali Memakai Seragam Putih Abu-Abu",
+            description:
+                "Momen awal perjalanan—seragam baru, wajah-wajah baru, dan rasa gugup yang pelan-pelan berubah jadi semangat. Hari ketika semuanya dimulai dan cerita besar mulai ditulis.",
+            image: "/public/assets/Journey/putih_abu.png",
+            year: "2023",
         },
         {
             id: 2,
-            title: "Health & Fitness App",
-            description: "A friendly fitness tracking app designed to help users manage routines and progress easily. Features workout plans, progress tracking, and community features.",
-            image: "/images/fitness.jpg",
-            year: "2022",
+            title: "Menari — Energi, Kekompakan, dan Tawa",
+            description:
+                "Latihan berjam-jam, gerakan yang hampir nggak sinkron, sampai akhirnya tampil penuh percaya diri. Sebuah pengalaman yang nyatuin banyak kepala jadi satu irama.",
+            image: "/public/assets/Journey/nari.jpg",
+            year: "2025",
         },
         {
             id: 3,
-            title: "Analytics Dashboard",
-            description: "A clean and powerful dashboard for visualizing metrics, trends, and business performance. Real-time data visualization with interactive charts.",
-            image: "/images/dashboard.jpg",
-            year: "2022",
+            title: "Bukber — Meja Panjang, Cerita Panjang",
+            description:
+                "Saat lapar, capek, dan cerita sehari-hari akhirnya ketemu di satu meja. Momen hangat yang selalu jadi alasan buat kumpul lagi dan lagi.",
+            image: "/public/assets/Journey/bukber.jpg",
+            year: "2023",
         },
         {
             id: 4,
-            title: "Brand Identity System",
-            description: "Complete brand identity: logo, color system, typography, and scalable design components. Created for a tech startup's rebranding initiative.",
-            image: "/images/brand.jpg",
-            year: "2021",
+            title: "IMTAQ — Menenangkan Diri di Tengah Kesibukan",
+            description:
+                "Waktu untuk refleksi, hening, dan saling menguatkan. Duduk bersama, belajar bersama, dan mengingat bahwa perjalanan ini bukan cuma soal nilai, tapi juga hati.",
+            image: "/public/assets/Journey/imtaq.jpg",
+            year: "2024",
         },
+        {
+            id: 5,
+            title: "Nonton Bareng — Tertawa dan Riuh Tanpa Batas",
+            description:
+                "Dari teriak bareng sampai komentar receh yang bikin suasana pecah. Nobar jadi salah satu momen sederhana yang justru paling ngena dan bikin akrab.",
+            image: "/public/assets/Journey/nobar.jpg",
+            year: "2024",
+        },
+        
     ];
 
     const containerVariants = {
@@ -116,7 +129,7 @@ const Journey = () => {
     return (
         <section
             id="journey"
-            className="section bg-white dark:bg-dark-secondary relative"
+            className="section bg-neutral-50 dark:bg-dark-secondary relative z-10"
             ref={containerRef}
         >
             <div className="container">
@@ -138,10 +151,10 @@ const Journey = () => {
                     }}
                 >
                     <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-4">
-                        Project Journey
+                        Our Journey
                     </h2>
                     <p className="text-sm sm:text-base text-gray-600 dark:text-dark-text-secondary px-4">
-                        A curated collection of my recent work and explorations.
+                        Timeline yang takkan mungkin dapat terulang kembali.
                     </p>
                 </motion.div>
 
@@ -168,8 +181,8 @@ const Journey = () => {
                             >
                                 <div className="relative px-2 sm:px-0">
                                     {/* Polaroid-like frame effect - lebih simple di mobile */}
-                                    <div className="hidden sm:block absolute -inset-3 sm:-inset-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg transform rotate-1"></div>
-                                    <div className="hidden sm:block absolute -inset-1 sm:-inset-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg transform -rotate-1"></div>
+                                    <div className="hidden sm:block absolute -inset-3 sm:-inset-4 bg-white dark:bg-gray-500 border border-gray-300 dark:border-gray-600 rounded-lg transform rotate-1"></div>
+                                    <div className="hidden sm:block absolute -inset-1 sm:-inset-2 bg-white dark:bg-gray-500 border border-gray-300 dark:border-gray-600 rounded-lg transform -rotate-1"></div>
 
                                     {/* Main image */}
                                     <div className="relative overflow-hidden rounded-lg sm:rounded-xl shadow-sm sm:shadow-md">
@@ -234,7 +247,7 @@ const Journey = () => {
                                         animate={{ width: "100%" }}
                                         transition={{ delay: 0.5, duration: 0.8 }}
                                     />
-                                    
+
                                     {/* Mobile divider */}
                                     <div className="md:hidden pt-3 border-t border-gray-100 dark:border-gray-800" />
                                 </div>

@@ -1,7 +1,7 @@
 import { ThemeProvider } from './context/ThemeContext';
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
-import About from './components/About';
+import Story from './components/Story';
 import Footer from './components/Footer';
 import Journey from './components/Journey';
 import Ngl from './components/Ngl';
@@ -17,7 +17,7 @@ function App() {
         <Navigation />
         <main>
           <Hero />
-          <About />
+          <Story />
           <ClassStructure />
           <Journey />
           <Gallery />

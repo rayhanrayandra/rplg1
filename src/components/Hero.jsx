@@ -56,8 +56,8 @@ const Hero = () => {
 
                     <div className="flex flex-wrap gap-4">
                         <button
-                            onClick={() => scrollToSection("work")}
-                            className="btn btn-primary"
+                            onClick={() => scrollToSection("story")}
+                            className="btn btn-primary outline-none dark:outline-1 dark:outline-secondary-light dark:outline-2"
                         >
                             Lihat Pengalaman
                         </button>
@@ -67,7 +67,7 @@ const Hero = () => {
                 {/* Marquee Fixed Bottom */}
                 <div className="fixed bottom-0 left-0 w-full overflow-hidden py-4 
                 bg-white/60 dark:bg-black/40 backdrop-blur-md 
-                border-t border-gray-200/40 dark:border-gray-700/40">
+                border-t border-gray-200/40 dark:border-gray-700/40 z-10">
 
                     {/* Fade kiri - kanan */}
                     <div className="pointer-events-none absolute left-0 top-0 h-full w-20 

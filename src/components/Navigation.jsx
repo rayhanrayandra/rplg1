@@ -7,9 +7,9 @@ const Navigation = () => {
     const { isDarkMode, toggleTheme } = useTheme();
 
     const navItems = [
-        { label: 'About', href: '#about' },
-        { label: 'Our Journey', href: '#journey' },
-        { label: 'Gallery', href: '#gallery' },
+        { label: 'Story', href: '#story' },
+        { label: 'Peoples', href: '#class_structure' },
+        { label: 'Journey', href: '#journey' },
         { label: 'Connect', href: '#connect' },
         { label: 'NGL Box', href: '#ngl' },
     ];
@@ -24,7 +24,7 @@ const Navigation = () => {
     };
 
     return (
-        <nav className="fixed w-full z-50 bg-white/80 dark:bg-dark-primary/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
+        <nav className="fixed w-full z-50 bg-white/80 dark:bg-dark-primary/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 transition-colors duration-300 z-50">
             <div className="container">
                 <div className="flex justify-between items-center h-16">
                     {/* Logo */}
@@ -81,7 +81,7 @@ const Navigation = () => {
                 </div>
 
                 {/* Mobile Menu */}
-                <div className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'} transition-all duration-300`}>
+                <div className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'} transition-all duration-300 z-50`}>
                     <div className="px-2 pt-2 pb-3 space-y-1 border-t border-gray-200 dark:border-gray-800 mt-2 transition-colors duration-300">
                         {navItems.map((item) => (
                             <button

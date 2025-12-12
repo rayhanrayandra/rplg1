@@ -202,7 +202,7 @@ const Gallery = () => {
     };
 
     return (
-        <section id="gallery" className="section bg-white dark:bg-dark-secondary relative">
+        <section id="gallery" className="section bg-white dark:bg-dark-secondary relative z-10">
             <div className="container">
                 <motion.div
                     className="text-center mb-8 lg:mb-12"
@@ -323,18 +323,6 @@ const Gallery = () => {
                                                 <span>{item.people} orang</span>
                                             </div>
                                         </div>
-
-                                        {/* Interaction Stats */}
-                                        <div className="flex items-center gap-3">
-                                            <div className="flex items-center gap-1">
-                                                <Heart className="w-3 h-3" />
-                                                <span>{item.likes}</span>
-                                            </div>
-                                            <div className="flex items-center gap-1">
-                                                <MessageCircle className="w-3 h-3" />
-                                                <span>{item.comments}</span>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -430,19 +418,6 @@ const Gallery = () => {
                                         <div className="flex items-center gap-2">
                                             <Users className="w-4 h-4 text-gray-400" />
                                             <span className="text-sm">{selectedImage.people} orang</span>
-                                        </div>
-                                        <div className="flex items-center gap-4">
-                                            <button className="flex items-center gap-1 text-gray-600 dark:text-gray-400 hover:text-red-500">
-                                                <Heart className="w-4 h-4" />
-                                                <span>{selectedImage.likes}</span>
-                                            </button>
-                                            <button className="flex items-center gap-1 text-gray-600 dark:text-gray-400 hover:text-blue-500">
-                                                <MessageCircle className="w-4 h-4" />
-                                                <span>{selectedImage.comments}</span>
-                                            </button>
-                                            <button className="flex items-center gap-1 text-gray-600 dark:text-gray-400 hover:text-green-500">
-                                                <Share2 className="w-4 h-4" />
-                                            </button>
                                         </div>
                                     </div>
 
