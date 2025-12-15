@@ -14,11 +14,11 @@ const Gallery = () => {
 
     const categories = [
         { id: 'all', label: 'Semua', count: 24 },
-        { id: 'daily', label: 'Harian', count: 8 },
-        { id: 'event', label: 'Acara', count: 6 },
-        { id: 'project', label: 'Project', count: 5 },
-        { id: 'graduation', label: 'Wisuda', count: 3 },
-        { id: 'casual', label: 'Santai', count: 2 },
+        { id: 'class', label: 'Kelas', count: 8 },
+        { id: 'activity', label: 'Aktivitas', count: 7 },
+        { id: 'project', label: 'Proyek', count: 6 },
+        { id: 'event', label: 'Acara', count: 2 },
+        { id: 'other', label: 'Lainnya', count: 1 },
     ];
 
     const galleryItems = [
@@ -202,7 +202,7 @@ const Gallery = () => {
     };
 
     return (
-        <section id="gallery" className="section bg-white dark:bg-dark-secondary relative z-10">
+        <section id="gallery" className="section bg-white dark:bg-dark-secondary relative z-10 border-y border-gray-200 dark:border-gray-800 dark:bg-dark">
             <div className="container">
                 <motion.div
                     className="text-center mb-8 lg:mb-12"
@@ -278,8 +278,7 @@ const Gallery = () => {
                             transition={{ delay: index * 0.05 }}
                             whileHover={{ y: -5 }}
                             className="group cursor-pointer"
-                            onClick={() => handleImageClick(item)}
-                        >
+                            onClick={() => handleImageClick(item)}>
                             <div className="card overflow-hidden">
                                 {/* Image Container */}
                                 <div className="relative overflow-hidden">

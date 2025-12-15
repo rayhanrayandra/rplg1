@@ -6,10 +6,7 @@ const Story = () => {
         hidden: { opacity: 0 },
         visible: {
             opacity: 1,
-            transition: {
-                staggerChildren: 0.2,
-                delayChildren: 0.1
-            }
+            transition: { staggerChildren: 0.2, delayChildren: 0.1 }
         }
     };
 
@@ -18,11 +15,7 @@ const Story = () => {
         visible: {
             opacity: 1,
             y: 0,
-            transition: {
-                type: "spring",
-                stiffness: 100,
-                damping: 15
-            }
+            transition: { type: "spring", stiffness: 100, damping: 15 }
         }
     };
 
@@ -31,33 +24,22 @@ const Story = () => {
         visible: {
             opacity: 1,
             scale: 1,
-            transition: {
-                type: "spring",
-                stiffness: 100,
-                damping: 15,
-                delay: 0.3
-            }
+            transition: { type: "spring", stiffness: 100, damping: 15, delay: 0.3 }
         },
         hover: {
             scale: 1.02,
-            transition: {
-                type: "spring",
-                stiffness: 400,
-                damping: 10
-            }
+            transition: { type: "spring", stiffness: 400, damping: 10 }
         }
     };
 
     return (
         <section id="story" className="section bg-white dark:bg-dark-secondary border-t border-gray-200 dark:border-gray-800">
             <div className="container">
-                <motion.div
-                    className="grid lg:grid-cols-2 gap-8 lg:gap-12"
+                <motion.div className="grid lg:grid-cols-2 gap-8 lg:gap-12"
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, amount: 0.1 }}
-                >
+                    viewport={{ once: true, amount: 0.1 }}>
                     {/* Left Column - Story & Journey */}
                     <motion.div variants={itemVariants} className="space-y-6">
                         {/* Header */}
@@ -72,11 +54,9 @@ const Story = () => {
 
                         {/* Story */}
                         <div className="space-y-4">
-                            <motion.div
-                                className="p-4 bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-800"
+                            <motion.div className="p-4 bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-800"
                                 variants={itemVariants}
-                                whileHover={{ x: 5 }}
-                            >
+                                whileHover={{ x: 5 }}>
                                 <div className="flex items-center gap-3 mb-2">
                                     <div className="p-2 bg-gray-200 dark:bg-gray-800 rounded-lg">
                                         <Users className="w-5 h-5 text-gray-700 dark:text-gray-300" />
@@ -89,11 +69,9 @@ const Story = () => {
                                 </p>
                             </motion.div>
 
-                            <motion.div
-                                className="p-4 bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-800"
+                            <motion.div className="p-4 bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-800"
                                 variants={itemVariants}
-                                whileHover={{ x: 5 }}
-                            >
+                                whileHover={{ x: 5 }}>
                                 <div className="flex items-center gap-3 mb-2">
                                     <div className="p-2 bg-gray-200 dark:bg-gray-800 rounded-lg">
                                         <Target className="w-5 h-5 text-gray-700 dark:text-gray-300" />
@@ -107,11 +85,9 @@ const Story = () => {
                                 </p>
                             </motion.div>
 
-                            <motion.div
-                                className="p-4 bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-800"
+                            <motion.div className="p-4 bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-800"
                                 variants={itemVariants}
-                                whileHover={{ x: 5 }}
-                            >
+                                whileHover={{ x: 5 }}>
                                 <div className="flex items-center gap-3 mb-2">
                                     <div className="p-2 bg-gray-200 dark:bg-gray-800 rounded-lg">
                                         <Heart className="w-5 h-5 text-gray-700 dark:text-gray-300" />
@@ -142,10 +118,8 @@ const Story = () => {
                                 </p>
                             </motion.div>
                             {/* Quick Stats */}
-                            <motion.div
-                                className="p-6 bg-gray-50 dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800"
-                                variants={itemVariants}
-                            >
+                            <motion.div className="p-6 bg-gray-50 dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800"
+                                variants={itemVariants}>
                                 <h4 className="font-bold text-lg mb-4 text-gray-900 dark:text-white">Dalam Angka</h4>
                                 <div className="grid grid-cols-2 gap-4">
                                     <div className="text-center">
@@ -168,11 +142,9 @@ const Story = () => {
                     {/* Right Column - Experience & Education */}
                     <div className="space-y-6">
                         {/* Experience Card */}
-                        <motion.div
-                            className="card p-6"
+                        <motion.div className="card p-6"
                             variants={cardVariants}
-                            whileHover="hover"
-                        >
+                            whileHover="hover">
                             <div className="flex items-start gap-4 mb-6">
                                 <motion.div
                                     className="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center flex-shrink-0"
@@ -228,11 +200,9 @@ const Story = () => {
                         </motion.div>
 
                         {/* Education Card */}
-                        <motion.div
-                            className="card p-6"
+                        <motion.div className="card p-6"
                             variants={cardVariants}
-                            whileHover="hover"
-                        >
+                            whileHover="hover">
                             <div className="flex items-start gap-4 mb-6">
                                 <motion.div
                                     className="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center flex-shrink-0"

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Menu, X, Moon, Sun } from 'lucide-react';
-import { useTheme } from '../context/ThemeContext';
+import { useTheme } from '../../context/ThemeContext';
 
 const Navigation = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -10,7 +10,7 @@ const Navigation = () => {
         { label: 'Story', href: '#story' },
         { label: 'Peoples', href: '#class_structure' },
         { label: 'Journey', href: '#journey' },
-        { label: 'Connect', href: '#connect' },
+        { label: 'Gallery', href: '#gallery' },
         { label: 'NGL Box', href: '#ngl' },
     ];
 
@@ -24,7 +24,7 @@ const Navigation = () => {
     };
 
     return (
-        <nav className="fixed w-full z-50 bg-white/80 dark:bg-dark-primary/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 transition-colors duration-300 z-50">
+        <nav className="fixed w-full z-50 bg-white/80 dark:bg-dark-primary/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 z-50">
             <div className="container">
                 <div className="flex justify-between items-center h-16">
                     {/* Logo */}

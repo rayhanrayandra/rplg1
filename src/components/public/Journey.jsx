@@ -4,21 +4,17 @@ import { motion, useInView, useAnimation } from "framer-motion";
 const Journey = () => {
     const containerRef = useRef(null);
     const isInView = useInView(containerRef, { once: true, amount: 0.1 });
-
     const controls = useAnimation();
 
     useEffect(() => {
-        if (isInView) {
-            controls.start("visible");
-        }
+        if (isInView) controls.start("visible");
     }, [isInView, controls]);
 
     const projects = [
         {
             id: 1,
             title: "Pertama Kali Memakai Seragam Putih Abu-Abu",
-            description:
-                "Momen awal perjalanan—seragam baru, wajah-wajah baru, dan rasa gugup yang pelan-pelan berubah jadi semangat. Hari ketika semuanya dimulai dan cerita besar mulai ditulis.",
+            description: "Momen awal perjalanan—seragam baru, wajah-wajah baru, dan rasa gugup yang pelan-pelan berubah jadi semangat. Hari ketika semuanya dimulai dan cerita besar mulai ditulis.",
             image: "/public/assets/Journey/putih_abu.png",
             year: "2023",
         },
@@ -54,7 +50,7 @@ const Journey = () => {
             image: "/public/assets/Journey/nobar.jpg",
             year: "2024",
         },
-        
+
     ];
 
     const containerVariants = {
@@ -127,14 +123,9 @@ const Journey = () => {
     };
 
     return (
-        <section
-            id="journey"
-            className="section bg-neutral-50 dark:bg-dark-secondary relative z-10"
-            ref={containerRef}
-        >
+        <section id="journey" className="section bg-white dark:bg-dark-secondary relative border-y border-gray-200 dark:border-gray-800" ref={containerRef}>
             <div className="container">
-                <motion.div
-                    className="text-center max-w-2xl mx-auto mb-12 md:mb-16"
+                <motion.div className="text-center max-w-2xl mx-auto mb-12 md:mb-16"
                     initial={{ opacity: 0, y: 20 }}
                     animate={controls}
                     variants={{
@@ -142,17 +133,11 @@ const Journey = () => {
                         visible: {
                             opacity: 1,
                             y: 0,
-                            transition: {
-                                type: "spring",
-                                stiffness: 100,
-                                damping: 15
-                            }
+                            transition: { type: "spring", stiffness: 100, damping: 15 }
                         }
                     }}
                 >
-                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-4">
-                        Our Journey
-                    </h2>
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-4">Our Journey</h2>
                     <p className="text-sm sm:text-base text-gray-600 dark:text-dark-text-secondary px-4">
                         Timeline yang takkan mungkin dapat terulang kembali.
                     </p>
@@ -173,39 +158,63 @@ const Journey = () => {
                                 ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}
                             `}
                         >
-                            {/* Image Container - Mobile: atas, Desktop: kiri/kanan */}
+                            {/* Image Container – Instant Photo Style */}
                             <motion.div
                                 className="w-full md:w-6/12 lg:w-5/12"
                                 variants={imageVariants}
-                                whileHover="hover"
                             >
-                                <div className="relative px-2 sm:px-0">
-                                    {/* Polaroid-like frame effect - lebih simple di mobile */}
-                                    <div className="hidden sm:block absolute -inset-3 sm:-inset-4 bg-white dark:bg-gray-500 border border-gray-300 dark:border-gray-600 rounded-lg transform rotate-1"></div>
-                                    <div className="hidden sm:block absolute -inset-1 sm:-inset-2 bg-white dark:bg-gray-500 border border-gray-300 dark:border-gray-600 rounded-lg transform -rotate-1"></div>
+                                <motion.div
+                                    className="
+                                                relative mx-auto max-w-sm border border-1 border-gray-200
+                                                bg-neutral-100 dark:bg-neutral-600 dark:border-gray-900
+                                                rounded-sm px-4 pt-4 pb-10
+                                                shadow-[0_20px_45px_rgba(0,0,0,0.25)]
+                                                dark:shadow-[0_25px_60px_rgba(0,0,0,0.65)]
+                                            "
+                                    style={{
+                                        rotate: index % 2 === 0 ? -2 : 2
+                                    }}
+                                    transition={{ type: "spring", stiffness: 120, damping: 14 }}
+                                >
 
-                                    {/* Main image */}
-                                    <div className="relative overflow-hidden rounded-lg sm:rounded-xl shadow-sm sm:shadow-md">
+                                    {/* Foto */}
+                                    <div className="relative overflow-hidden">
                                         <motion.img
                                             src={project.image}
                                             alt={project.title}
-                                            className="w-full h-48 sm:h-64 md:h-72 object-cover"
-                                            whileHover={{ scale: 1.05 }}
-                                            transition={{ duration: 0.3 }}
+                                            className="
+                                                    w-full h-48 sm:h-64 object-cover
+                                                    dark:brightness-75 dark:contrast-110
+                                                    "
+                                            transition={{ duration: 0.4 }}
                                         />
 
-                                        {/* Year tag */}
-                                        <motion.div
-                                            className="absolute top-3 left-3 sm:top-4 sm:left-4 px-2 py-1 sm:px-3 sm:py-1 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm rounded-full text-xs sm:text-sm font-medium"
-                                            initial={{ opacity: 0, scale: 0.8 }}
-                                            animate={{ opacity: 1, scale: 1 }}
-                                            transition={{ delay: 0.4 }}
-                                        >
-                                            {project.year}
-                                        </motion.div>
+                                        {/* Vignette – Dark mode only */}
+                                        <div
+                                            className="
+                                                    pointer-events-none
+                                                    absolute inset-0
+                                                    hidden dark:block
+                                                    "
+                                            style={{
+                                                background:
+                                                    "radial-gradient(circle at center, rgba(0,0,0,0) 0%, rgba(0,0,0,0.55) 100%)",
+                                            }}
+                                        />
                                     </div>
-                                </div>
+
+
+                                    {/* Caption / Year */}
+                                    <div className="absolute bottom-3 left-0 w-full text-center">
+                                        <p className="text-xs text-gray-600 dark:text-gray-400 tracking-wider">
+                                            {project.year}
+                                        </p>
+                                    </div>
+                                </motion.div>
                             </motion.div>
+
+
+
 
                             {/* Content - Mobile: bawah, Desktop: samping */}
                             <motion.div
@@ -256,32 +265,20 @@ const Journey = () => {
                     ))}
                 </motion.div>
 
-                {/* Decorative element - hanya di desktop */}
-                <motion.div
-                    className="hidden md:block mt-16 pt-8 border-t border-gray-200 dark:border-gray-800 text-center"
+                <motion.div className="hidden md:block mt-16 pt-8 border-t border-gray-200 dark:border-gray-800 text-center"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 1 }}
                 >
-                    <motion.p
-                        className="text-gray-500 dark:text-gray-400 text-sm"
+                    <motion.p className="text-gray-500 dark:text-gray-400 text-sm"
                         animate={{ y: [0, -5, 0] }}
-                        transition={{
-                            repeat: Infinity,
-                            duration: 2,
-                            ease: "easeInOut"
-                        }}
+                        transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
                     >
                         Scroll for more
                     </motion.p>
-                    <motion.div
-                        className="w-6 h-1 bg-gray-300 dark:bg-gray-700 mx-auto mt-2 rounded-full"
+                    <motion.div className="w-6 h-1 bg-gray-300 dark:bg-gray-700 mx-auto mt-2 rounded-full"
                         animate={{ scaleX: [0.5, 1, 0.5] }}
-                        transition={{
-                            repeat: Infinity,
-                            duration: 1.5,
-                            ease: "easeInOut"
-                        }}
+                        transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
                     />
                 </motion.div>
             </div>

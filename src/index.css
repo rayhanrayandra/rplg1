@@ -5,23 +5,17 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+  }
 
-    /* Tambahkan transition untuk seluruh elemen */
-    * {
-      @apply transition-colors duration-300;
-    }
+  * {
+    @apply transition-colors duration-0;
   }
 
   body {
     @apply bg-primary-light text-gray-900 dark:bg-dark-primary dark:text-dark-text-primary;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  h1, h2, h3, h4, h5, h6 {
     @apply font-heading;
   }
 }
@@ -32,7 +26,7 @@
   }
 
   .section {
-    @apply py-16 md:py-20 lg:py-24;
+    @apply py-16 md:py-20 lg:py-24 snap-start ;
   }
 
   .btn {
@@ -69,3 +63,4 @@
 .animate-marquee {
   animation: marquee 25s linear infinite;
 }
+

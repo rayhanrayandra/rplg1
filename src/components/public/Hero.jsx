@@ -27,14 +27,7 @@ const Hero = () => {
         >
             {/* Background Grid Pattern */}
             <div className="absolute inset-0 -z-10 opacity-30">
-                <div
-                    className="
-            w-full h-full
-            bg-[linear-gradient(to_right,#999_1px,transparent_1px),linear-gradient(to_bottom,#999_1px,transparent_1px)]
-            dark:bg-[linear-gradient(to_right,#444_1px,transparent_1px),linear-gradient(to_bottom,#444_1px,transparent_1px)]
-            bg-[size:40px_40px]
-        "
-                />
+                <div className="w-full h-full bg-[linear-gradient(to_right,#999_1px,transparent_1px),linear-gradient(to_bottom,#999_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#444_1px,transparent_1px),linear-gradient(to_bottom,#444_1px,transparent_1px)] bg-[size:40px_40px]" />
             </div>
 
 
@@ -59,36 +52,23 @@ const Hero = () => {
                             onClick={() => scrollToSection("story")}
                             className="btn btn-primary outline-none dark:outline-1 dark:outline-secondary-light dark:outline-2"
                         >
-                            Lihat Pengalaman
+                            Lihat Cerita
                         </button>
                     </div>
                 </div>
 
                 {/* Marquee Fixed Bottom */}
-                <div className="fixed bottom-0 left-0 w-full overflow-hidden py-4 
-                bg-white/60 dark:bg-black/40 backdrop-blur-md 
-                border-t border-gray-200/40 dark:border-gray-700/40 z-10">
-
+                <div className="fixed bottom-0 left-0 w-full overflow-hidden py-4 bg-white/60 dark:bg-black/40 backdrop-blur-md border-t border-gray-200/40 dark:border-gray-700/40 z-10">
                     {/* Fade kiri - kanan */}
-                    <div className="pointer-events-none absolute left-0 top-0 h-full w-20 
-                    bg-gradient-to-r from-white dark:from-black to-transparent" />
-
-                    <div className="pointer-events-none absolute right-0 top-0 h-full w-20 
-                    bg-gradient-to-l from-white dark:from-black to-transparent" />
+                    <div className="pointer-events-none absolute left-0 top-0 h-full w-20 bg-gradient-to-r from-white dark:from-black to-transparent" />
+                    <div className="pointer-events-none absolute right-0 top-0 h-full w-20 bg-gradient-to-l from-white dark:from-black to-transparent" />
 
                     <div className="flex items-center gap-14 animate-marquee whitespace-nowrap opacity-80 hover:opacity-100 transition">
-
                         {marqueeList.map((item, i) => (
-                            <span
-                                key={i}
-                                className="font-normal tracking-wide text-[clamp(0.75rem,2vw,1.25rem)]"
-                            >
+                            <span key={i} className="font-normal tracking-wide text-[clamp(0.75rem,2vw,1.25rem)]">
                                 {item}
                             </span>
-
-
                         ))}
-
                     </div>
                 </div>
 
