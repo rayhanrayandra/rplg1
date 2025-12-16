@@ -305,6 +305,55 @@ const Ngl = () => {
         }
     };
 
+    // ================ LOCAL STORAGE FUNCTIONS ================
+
+    const loadLikedMessages = () => {
+        try {
+            const likedMessagesSet = new Set();
+
+            // Coba baca dari localStorage
+            const storedLikes = localStorage.getItem('ngl_liked_messages');
+
+            if (storedLikes) {
+                try {
+                    const parsedLikes = JSON.parse(storedLikes);
+                    if (Array.isArray(parsedLikes)) {
+                        parsedLikes.forEach(msgId => likedMessagesSet.add(msgId));
+                    }
+                } catch (error) {
+                    console.error('Error parsing liked messages:', error);
+                    // Jika error parsing, hapus data yang corrupt
+                    localStorage.removeItem('ngl_liked_messages');
+                }
+            } else {
+                // Coba migrate dari format lama
+                for (let i = 0; i < localStorage.length; i++) {
+                    const key = localStorage.key(i);
+                    if (key && key.startsWith('ngl_like_')) {
+                        const messageId = key.replace('ngl_like_', '');
+                        likedMessagesSet.add(messageId);
+                        localStorage.removeItem(key); // Hapus format lama
+                    }
+                }
+                // Simpan ke format baru
+                saveLikedMessages(likedMessagesSet);
+            }
+
+            setLikedMessages(likedMessagesSet);
+        } catch (error) {
+            console.error('Error loading liked messages:', error);
+        }
+    };
+
+    const saveLikedMessages = (likedSet) => {
+        try {
+            const likedArray = Array.from(likedSet);
+            localStorage.setItem('ngl_liked_messages', JSON.stringify(likedArray));
+        } catch (error) {
+            console.error('Error saving liked messages:', error);
+        }
+    };
+
     // Handle like
     const handleLike = async (messageId) => {
         if (likedMessages.has(messageId)) return;
@@ -312,8 +361,14 @@ const Ngl = () => {
         try {
             const newLikedMessages = new Set(likedMessages);
             newLikedMessages.add(messageId);
+
+            // Simpan ke state
             setLikedMessages(newLikedMessages);
 
+            // Simpan ke localStorage
+            saveLikedMessages(newLikedMessages);
+
+            // Update UI langsung
             setNglMessages(prev =>
                 prev.map(msg => {
                     if (msg.id === messageId) {
@@ -326,12 +381,19 @@ const Ngl = () => {
                 })
             );
 
-            sessionStorage.setItem(`ngl_like_${messageId}`, 'true');
-
+            // Kirim like ke API
             await callEdgeFunction('like-message', { messageId });
 
         } catch (error) {
             console.error('Error liking message:', error);
+
+            // Rollback jika gagal
+            const rollbackLikedMessages = new Set(likedMessages);
+            rollbackLikedMessages.delete(messageId);
+            setLikedMessages(rollbackLikedMessages);
+            saveLikedMessages(rollbackLikedMessages);
+
+            // Rollback UI
             setNglMessages(prev =>
                 prev.map(msg => {
                     if (msg.id === messageId) {
@@ -343,10 +405,6 @@ const Ngl = () => {
                     return msg;
                 })
             );
-            const rollbackLikedMessages = new Set(likedMessages);
-            rollbackLikedMessages.delete(messageId);
-            setLikedMessages(rollbackLikedMessages);
-            sessionStorage.removeItem(`ngl_like_${messageId}`);
         }
     };
 
@@ -454,22 +512,6 @@ const Ngl = () => {
             startAutoSlide();
         }
     }, [nglMessages.length, isCarouselHovered, isCarouselTouched]);
-
-    const loadLikedMessages = () => {
-        try {
-            const likedMessagesSet = new Set();
-            for (let i = 0; i < sessionStorage.length; i++) {
-                const key = sessionStorage.key(i);
-                if (key && key.startsWith('ngl_like_')) {
-                    const messageId = key.replace('ngl_like_', '');
-                    likedMessagesSet.add(messageId);
-                }
-            }
-            setLikedMessages(likedMessagesSet);
-        } catch (error) {
-            console.error('Error loading liked messages:', error);
-        }
-    };
 
     const getRandomEmoji = () => {
         const emojis = ['🎉', '😅', '🙏', '🔥', '📈', '🤝', '✨', '💫', '😊', '👍', '❤️', '👏', '🎊', '🌟', '😄'];
