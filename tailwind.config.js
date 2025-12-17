@@ -4,11 +4,10 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
-  darkMode: 'class', // Menggunakan class untuk dark mode
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
-        // Colors for light mode
         primary: {
           light: '#ffffff',
           DEFAULT: '#f9fafb',
@@ -24,7 +23,6 @@ export default {
           DEFAULT: '#2563eb',
           dark: '#1d4ed8',
         },
-        // Colors for dark mode
         dark: {
           primary: '#0a0a0a',
           secondary: '#121212',
@@ -37,14 +35,19 @@ export default {
           }
         }
       },
+
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
         heading: ['Space Grotesk', 'system-ui', 'sans-serif'],
       },
+
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',
         'slide-up': 'slideUp 0.3s ease-out',
+
+        marquee: 'marquee 30s linear infinite',
       },
+
       keyframes: {
         fadeIn: {
           '0%': { opacity: '0' },
@@ -54,8 +57,13 @@ export default {
           '0%': { transform: 'translateY(10px)', opacity: '0' },
           '100%': { transform: 'translateY(0)', opacity: '1' },
         },
+
+        marquee: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
       },
     },
   },
   plugins: [],
-}
+};

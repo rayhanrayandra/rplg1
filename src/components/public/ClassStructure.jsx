@@ -25,7 +25,7 @@ const ClassStructure = () => {
                 },
 
                 {
-                    level: "Tim Inti",
+                    level: "Siswa",
                     members: [
                         {
                             name: "Rayhan Qolbi Rayandra",
@@ -50,13 +50,7 @@ const ClassStructure = () => {
                             position: "Bendahara",
                             icon: Users,
                             color: "bg-purple-100 dark:bg-purple-900/30"
-                        }
-                    ]
-                },
-
-                {
-                    level: "Anggota",
-                    members: [
+                        },
                         { name: "Ahmad Fikri", position: "Anggota", icon: Award, color: "bg-gray-100 dark:bg-gray-800" },
                         { name: "Apandi", position: "Anggota", icon: Award, color: "bg-gray-100 dark:bg-gray-800" },
                         { name: "Arya Ariri", position: "Anggota", icon: Award, color: "bg-gray-100 dark:bg-gray-800" },
@@ -89,7 +83,8 @@ const ClassStructure = () => {
                         { name: "Wahyu Rahmatullah", position: "Anggota", icon: Award, color: "bg-gray-100 dark:bg-gray-800" },
                         { name: "Yusuf Hendrawan", position: "Anggota", icon: Award, color: "bg-gray-100 dark:bg-gray-800" }
                     ]
-                }
+                },
+
             ]
         },
         2024: {
@@ -109,7 +104,7 @@ const ClassStructure = () => {
                 },
 
                 {
-                    level: "Tim Inti",
+                    level: "Siswa",
                     members: [
                         {
                             name: "Haris Adrian",
@@ -134,13 +129,7 @@ const ClassStructure = () => {
                             position: "Bendahara",
                             icon: Users,
                             color: "bg-purple-100 dark:bg-purple-900/30"
-                        }
-                    ]
-                },
-
-                {
-                    level: "Anggota",
-                    members: [
+                        },
                         { name: "Apandi", position: "Anggota", icon: Award, color: "bg-gray-100 dark:bg-gray-800" },
                         { name: "Arya Ariri", position: "Anggota", icon: Award, color: "bg-gray-100 dark:bg-gray-800" },
                         { name: "Arya Yudha Pramudya", position: "Anggota", icon: Award, color: "bg-gray-100 dark:bg-gray-800" },
@@ -193,7 +182,7 @@ const ClassStructure = () => {
                 },
 
                 {
-                    level: "Tim Inti",
+                    level: "Siswa",
                     members: [
                         {
                             name: "Haris Adrian",
@@ -218,13 +207,7 @@ const ClassStructure = () => {
                             position: "Bendahara",
                             icon: Users,
                             color: "bg-purple-100 dark:bg-purple-900/30"
-                        }
-                    ]
-                },
-
-                {
-                    level: "Anggota",
-                    members: [
+                        },
                         { name: "Apandi", position: "Anggota", icon: Award, color: "bg-gray-100 dark:bg-gray-800" },
                         { name: "Arya Ariri", position: "Anggota", icon: Award, color: "bg-gray-100 dark:bg-gray-800" },
                         { name: "Arya Yudha Pramudya", position: "Anggota", icon: Award, color: "bg-gray-100 dark:bg-gray-800" },
@@ -257,7 +240,7 @@ const ClassStructure = () => {
                         { name: "Wahyu Rahmatullah", position: "Anggota", icon: Award, color: "bg-gray-100 dark:bg-gray-800" },
                         { name: "Yusuf Hendrawan", position: "Anggota", icon: Award, color: "bg-gray-100 dark:bg-gray-800" }
                     ]
-                }
+                },
             ]
         }
     };
@@ -325,7 +308,7 @@ const ClassStructure = () => {
                         </div>
 
                         {/* Structure */}
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             {data.structure.map((level, idx) => (
                                 <motion.div
                                     key={idx}
@@ -334,7 +317,7 @@ const ClassStructure = () => {
                                     transition={{ delay: idx * 0.08 }}
                                     className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-dark-card p-5 flex flex-col"
                                 >
-                                    <h4 className="text-sm font-semibold mb-4 text-gray-700 dark:text-gray-300">
+                                    <h4 className="text-sm text-center font-semibold mb-4 text-gray-700 dark:text-gray-300">
                                         {level.level}
                                     </h4>
 

@@ -10,10 +10,6 @@ const Hero = () => {
     const techList = [
         "React", "Next.js", "TailwindCSS", "Node.js", "Express",
         "Git", "Docker", "MySQL", "MongoDB", "PostgreSQL",
-        "Laravel", "PHP", "TypeScript", "JavaScript", "Jest", "React", "Next.js", "TailwindCSS", "Node.js", "Express",
-        "Git", "Docker", "MySQL", "MongoDB", "PostgreSQL",
-        "Laravel", "PHP", "TypeScript", "JavaScript", "Jest", "React", "Next.js", "TailwindCSS", "Node.js", "Express",
-        "Git", "Docker", "MySQL", "MongoDB", "PostgreSQL",
         "Laravel", "PHP", "TypeScript", "JavaScript", "Jest",
     ];
 
@@ -57,15 +53,25 @@ const Hero = () => {
                     </div>
                 </div>
 
-                {/* Marquee Fixed Bottom */}
-                <div className="fixed bottom-0 left-0 w-full overflow-hidden py-4 bg-white/60 dark:bg-black/40 backdrop-blur-md border-t border-gray-200/40 dark:border-gray-700/40 z-10">
-                    {/* Fade kiri - kanan */}
-                    <div className="pointer-events-none absolute left-0 top-0 h-full w-20 bg-gradient-to-r from-white dark:from-black to-transparent" />
-                    <div className="pointer-events-none absolute right-0 top-0 h-full w-20 bg-gradient-to-l from-white dark:from-black to-transparent" />
+                <div className="fixed bottom-0 left-0 w-full overflow-hidden py-4 
+                bg-white/60 dark:bg-black/40 backdrop-blur-md 
+                border-t border-gray-200/40 dark:border-gray-700/40 z-10">
 
-                    <div className="flex items-center gap-14 animate-marquee whitespace-nowrap opacity-80 hover:opacity-100 transition">
+                    {/* Fade kiri kanan */}
+                    <div className="pointer-events-none absolute left-0 top-0 h-full w-24 
+                  bg-gradient-to-r from-white dark:from-black to-transparent z-10" />
+                    <div className="pointer-events-none absolute right-0 top-0 h-full w-24 
+                  bg-gradient-to-l from-white dark:from-black to-transparent z-10" />
+
+                    {/* Track */}
+                    <div className="flex w-fit animate-marquee">
                         {marqueeList.map((item, i) => (
-                            <span key={i} className="font-normal tracking-wide text-[clamp(0.75rem,2vw,1.25rem)]">
+                            <span
+                                key={i}
+                                className="mx-7 font-normal tracking-wide 
+                   text-[clamp(0.75rem,2vw,1.25rem)] 
+                   whitespace-nowrap opacity-80 hover:opacity-100 transition"
+                            >
                                 {item}
                             </span>
                         ))}

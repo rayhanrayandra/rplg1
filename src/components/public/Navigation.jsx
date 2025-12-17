@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Menu, X, Moon, Sun } from 'lucide-react';
-import { useTheme } from '../../context/ThemeContext';
+import { useTheme } from '../../contexts/ThemeContext';
 
 const Navigation = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -35,7 +35,7 @@ const Navigation = () => {
                             className="h-7 w-7 rounded-full object-cover"
                         />
                         <span className="text-xl font-heading font-bold text-gray-900 dark:text-white">
-                            | RPLG1
+                            | RPLG 1
                         </span>
                     </div>
 

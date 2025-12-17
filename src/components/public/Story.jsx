@@ -35,6 +35,20 @@ const Story = () => {
     return (
         <section id="story" className="section bg-white dark:bg-dark-secondary border-t border-gray-200 dark:border-gray-800">
             <div className="container">
+                {/* Header */}
+                <motion.div
+                    className='p-1'
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.1 }}>
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white">
+                        Our Story
+                    </h2>
+                    <p className="text-base text-gray-600 dark:text-gray-400 mb-6">
+                        Dari 35 individu menjadi satu keluarga. Dari baris kode pertama hingga project hidup.
+                    </p>
+                </motion.div>
                 <motion.div className="grid lg:grid-cols-2 gap-8 lg:gap-12"
                     variants={containerVariants}
                     initial="hidden"
@@ -42,15 +56,6 @@ const Story = () => {
                     viewport={{ once: true, amount: 0.1 }}>
                     {/* Left Column - Story & Journey */}
                     <motion.div variants={itemVariants} className="space-y-6">
-                        {/* Header */}
-                        <div>
-                            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white">
-                                Our Story
-                            </h2>
-                            <p className="text-base text-gray-600 dark:text-gray-400 mb-6">
-                                Dari 35 individu menjadi satu keluarga. Dari baris kode pertama hingga project hidup.
-                            </p>
-                        </div>
 
                         {/* Story */}
                         <div className="space-y-4">
