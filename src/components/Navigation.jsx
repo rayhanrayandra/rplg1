@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Menu, X, Moon, Sun } from 'lucide-react';
-import { useTheme } from '../../contexts/ThemeContext';
+import { useTheme } from '../contexts/ThemeContext';
 
 const Navigation = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -10,7 +10,7 @@ const Navigation = () => {
         { label: 'Story', href: '#story' },
         { label: 'Peoples', href: '#class_structure' },
         { label: 'Journey', href: '#journey' },
-        { label: 'Gallery', href: '#gallery' },
+        // { label: 'Gallery', href: '#gallery' },
         { label: 'NGL Box', href: '#ngl' },
     ];
 
