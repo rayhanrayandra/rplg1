@@ -1028,6 +1028,7 @@ const Ngl = () => {
                         </p>
                         <div className="flex items-center justify-center gap-3">
                             <a
+                                target='_blank'
                                 href="https://instagram.com/rplg_1"
                                 className="p-3 bg-gray-100 dark:bg-gray-800 rounded-full 
                        hover:bg-gray-200 dark:hover:bg-gray-700 

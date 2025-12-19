@@ -6,7 +6,7 @@ const Footer = () => {
             <div className="container px-4 sm:px-6">
                 <div className="flex flex-col md:flex-row justify-between items-center">
                     <p className="text-sm md:text-base text-gray-600 dark:text-dark-text-secondary mb-4 md:mb-0 text-center md:text-left">
-                        © {currentYear} RPLG1. All rights reserved.
+                        © {currentYear} RPLG 1. All rights reserved.
                     </p>
                     <p className="text-sm md:text-base text-gray-600 dark:text-dark-text-secondary text-center md:text-right">
                         Designed & Developed with care

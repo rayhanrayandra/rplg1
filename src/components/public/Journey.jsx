@@ -15,7 +15,7 @@ const Journey = () => {
             id: 1,
             title: "Pertama Kali Memakai Seragam Putih Abu-Abu",
             description: "Momen awal perjalanan—seragam baru, wajah-wajah baru, dan rasa gugup yang pelan-pelan berubah jadi semangat. Hari ketika semuanya dimulai dan cerita besar mulai ditulis.",
-            image: "/public/assets/Journey/putih_abu.png",
+            image: "/assets/Journey/putih_abu.png",
             year: "2023",
         },
         {

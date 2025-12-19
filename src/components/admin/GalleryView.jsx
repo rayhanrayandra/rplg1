@@ -300,7 +300,7 @@ const GalleryView = () => {
     };
 
     return (
-        <section id="gallery" className="section bg-white dark:bg-dark-secondary py-8 lg:py-12">
+        <section id="gallery" className="section bg-white dark:bg-dark-secondary py-8 lg:py-12 ">
             <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header */}
                 <motion.div
