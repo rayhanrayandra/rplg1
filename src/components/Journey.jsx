@@ -15,7 +15,7 @@ const Journey = () => {
             id: 1,
             title: "Pertama Kali Memakai Seragam Putih Abu-Abu",
             description: "Momen awal perjalanan—seragam baru, wajah-wajah baru, dan rasa gugup yang pelan-pelan berubah jadi semangat. Hari ketika semuanya dimulai dan cerita besar mulai ditulis.",
-            image: "/assets/Journey/putih_abu.png",
+            image: "/assets/Journey/putih_abu.webp",
             year: "2023",
         },
         {
@@ -23,32 +23,32 @@ const Journey = () => {
             title: "Menari — Energi, Kekompakan, dan Tawa",
             description:
                 "Latihan berjam-jam, gerakan yang hampir nggak sinkron, sampai akhirnya tampil penuh percaya diri. Sebuah pengalaman yang nyatuin banyak kepala jadi satu irama.",
-            image: "/public/assets/Journey/nari.jpg",
-            year: "2025",
+            image: "/assets/Journey/nari.webp",
+            year: "2023",
         },
         {
             id: 3,
             title: "Bukber — Meja Panjang, Cerita Panjang",
             description:
                 "Saat lapar, capek, dan cerita sehari-hari akhirnya ketemu di satu meja. Momen hangat yang selalu jadi alasan buat kumpul lagi dan lagi.",
-            image: "/public/assets/Journey/bukber.jpg",
-            year: "2023",
+            image: "/assets/Journey/bukber.webp",
+            year: "2024",
         },
         {
             id: 4,
             title: "IMTAQ — Menenangkan Diri di Tengah Kesibukan",
             description:
                 "Waktu untuk refleksi, hening, dan saling menguatkan. Duduk bersama, belajar bersama, dan mengingat bahwa perjalanan ini bukan cuma soal nilai, tapi juga hati.",
-            image: "/public/assets/Journey/imtaq.jpg",
-            year: "2024",
+            image: "/assets/Journey/imtaq.webp",
+            year: "2025",
         },
         {
             id: 5,
             title: "Nonton Bareng — Tertawa dan Riuh Tanpa Batas",
             description:
                 "Dari teriak bareng sampai komentar receh yang bikin suasana pecah. Nobar jadi salah satu momen sederhana yang justru paling ngena dan bikin akrab.",
-            image: "/public/assets/Journey/nobar.jpg",
-            year: "2024",
+            image: "/assets/Journey/nobar.webp",
+            year: "2025",
         },
 
     ];
@@ -166,7 +166,7 @@ const Journey = () => {
                                 <motion.div
                                     className="
                                                 relative mx-auto max-w-sm border border-1 border-gray-200
-                                                bg-neutral-100 dark:bg-neutral-600 dark:border-gray-900
+                                                bg-neutral-100 dark:bg-neutral-400 dark:border-gray-900
                                                 rounded-sm px-4 pt-4 pb-10
                                                 shadow-[0_20px_45px_rgba(0,0,0,0.25)]
                                                 dark:shadow-[0_25px_60px_rgba(0,0,0,0.65)]
@@ -206,7 +206,7 @@ const Journey = () => {
 
                                     {/* Caption / Year */}
                                     <div className="absolute bottom-3 left-0 w-full text-center">
-                                        <p className="text-xs text-gray-600 dark:text-gray-400 tracking-wider">
+                                        <p className="text-xs text-gray-600 dark:text-gray-800 tracking-wider">
                                             {project.year}
                                         </p>
                                     </div>

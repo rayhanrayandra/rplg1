@@ -1,19 +1,29 @@
 import { ThemeProvider } from './contexts/ThemeContext';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import PublicPage from './page/PublicPage'
-import AdminPage from './page/AdminPage'
+import Hero from './components/Hero';
+import Story from './components/Story';
+import ClassStructure from './components/ClassStructure';
+import Journey from './components/Journey';
+import Ngl from './components/Ngl';
+import Footer from './components/Footer';
+import Navigation from './components/Navigation';
 
-function App() {
+const App = () => {
   return (
-    <BrowserRouter>
-      <ThemeProvider>
-        <Routes>
-          <Route path="*" element={<PublicPage />} />
-          <Route path="/admin/*" element={<AdminPage />} />
-        </Routes>
-      </ThemeProvider>
-    </BrowserRouter >
+    <ThemeProvider>
+      <div className="min-h-screen snap-y snap-proximity scroll-smooth">
+        <Navigation />
+        <main>
+          <Hero />
+          <Story />
+          <ClassStructure />
+          <Journey />
+          <Ngl />
+        </main>
+        <Footer />
+      </div>
+    </ThemeProvider>
   );
-}
+};
 
 export default App;
+
