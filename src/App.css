@@ -16,13 +16,3 @@
 .dark .overflow-y-auto::-webkit-scrollbar-thumb {
   background-color: #4b5563;
 }
-
-/* Style untuk input date di dark mode */
-input[type="date"]::-webkit-calendar-picker-indicator {
-    filter: invert(1) brightness(0.7);
-}
-
-/* Untuk Firefox */
-input[type="date"] {
-    color-scheme: dark;
-}
