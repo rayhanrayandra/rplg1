@@ -21,7 +21,7 @@ const Story = () => {
 
     return (
         <section id="story" className="section bg-white dark:bg-dark-secondary">
-            <div className="container max-w-6xl border-x border-1 dark:border-gray-900 border-gray-100">
+            <div className="container max-w-6xl border-x border-1 dark:border-slate-900 border-gray-100">
                 {/* Header */}
                 <motion.div
                     initial="hidden"

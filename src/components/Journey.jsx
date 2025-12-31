@@ -123,6 +123,7 @@ const Journey = () => {
     };
 
     return (
+        
         <section id="journey" className="section bg-white dark:bg-dark-secondary relative border-y border-gray-200 dark:border-gray-800" ref={containerRef}>
             <div className="container">
                 <motion.div className="text-center max-w-2xl mx-auto mb-12 md:mb-16"

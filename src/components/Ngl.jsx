@@ -67,6 +67,84 @@ const Ngl = () => {
         { id: 'auto', label: 'Auto Deteksi', icon: '🔍', color: 'bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30' }
     ];
 
+    // ================ FORMAT NUMBER FUNCTIONS ================
+
+    // Fungsi format angka seperti Instagram
+    const formatNumber = (num) => {
+        if (typeof num !== 'number') {
+            // Coba konversi ke number jika string
+            const parsedNum = parseInt(num) || 0;
+            return formatNumber(parsedNum);
+        }
+
+        if (num < 1000) {
+            return num.toString(); // Tampilkan biasa jika di bawah 1000
+        }
+
+        if (num < 10000) {
+            // Untuk angka 1000-9999: 1.2K, 9.5K
+            const kValue = (num / 1000).toFixed(1);
+            // Hapus .0 jika ada
+            return kValue.endsWith('.0') ? Math.floor(num / 1000) + 'K' : kValue + 'K';
+        }
+
+        if (num < 1000000) {
+            // Untuk angka 10.000-999.999: 10K, 999K
+            return Math.floor(num / 1000) + 'K';
+        }
+
+        if (num < 10000000) {
+            // Untuk angka 1.000.000-9.999.999: 1.2M, 9.5M
+            const mValue = (num / 1000000).toFixed(1);
+            return mValue.endsWith('.0') ? Math.floor(num / 1000000) + 'M' : mValue + 'M';
+        }
+
+        if (num < 1000000000) {
+            // Untuk angka 10.000.000-999.999.999: 10M, 999M
+            return Math.floor(num / 1000000) + 'M';
+        }
+
+        if (num < 10000000000) {
+            // Untuk angka 1.000.000.000-9.999.999.999: 1.2B, 9.5B
+            const bValue = (num / 1000000000).toFixed(1);
+            return bValue.endsWith('.0') ? Math.floor(num / 1000000000) + 'B' : bValue + 'B';
+        }
+
+        // Untuk angka di atas 10B
+        return Math.floor(num / 1000000000) + 'B';
+    };
+
+    // Fungsi untuk parsing string format Instagram ke number
+    const parseStringToNumber = (str) => {
+        if (typeof str === 'number') return str;
+        if (!str) return 0;
+
+        const lowerStr = str.toString().toLowerCase().trim();
+
+        if (lowerStr.includes('k')) {
+            const num = parseFloat(lowerStr.replace('k', '')) * 1000;
+            return Math.round(num);
+        }
+
+        if (lowerStr.includes('m')) {
+            const num = parseFloat(lowerStr.replace('m', '')) * 1000000;
+            return Math.round(num);
+        }
+
+        if (lowerStr.includes('b')) {
+            const num = parseFloat(lowerStr.replace('b', '')) * 1000000000;
+            return Math.round(num);
+        }
+
+        return parseInt(str) || 0;
+    };
+
+    // Format stats numbers
+    const formattedStats = {
+        totalMessages: formatNumber(totalStats.totalMessages || 0),
+        totalLikes: formatNumber(totalStats.totalLikes || 0)
+    };
+
     // ================ AUTO-REFRESH SYSTEM ================
 
     // Setup auto-refresh setiap 30 detik
@@ -354,7 +432,7 @@ const Ngl = () => {
         }
     };
 
-    // Handle like
+    // Handle like dengan format angka
     const handleLike = async (messageId) => {
         if (likedMessages.has(messageId)) return;
 
@@ -368,13 +446,17 @@ const Ngl = () => {
             // Simpan ke localStorage
             saveLikedMessages(newLikedMessages);
 
-            // Update UI langsung
+            // Update UI langsung - konversi ke number jika perlu
             setNglMessages(prev =>
                 prev.map(msg => {
                     if (msg.id === messageId) {
+                        const currentLikesNum = typeof msg.likes === 'string'
+                            ? parseStringToNumber(msg.likes)
+                            : (msg.likes || 0);
+
                         return {
                             ...msg,
-                            likes: (msg.likes || 0) + 1
+                            likes: currentLikesNum + 1
                         };
                     }
                     return msg;
@@ -397,9 +479,13 @@ const Ngl = () => {
             setNglMessages(prev =>
                 prev.map(msg => {
                     if (msg.id === messageId) {
+                        const currentLikesNum = typeof msg.likes === 'string'
+                            ? parseStringToNumber(msg.likes)
+                            : (msg.likes || 0);
+
                         return {
                             ...msg,
-                            likes: Math.max(0, (msg.likes || 0) - 1)
+                            likes: Math.max(0, currentLikesNum - 1)
                         };
                     }
                     return msg;
@@ -543,29 +629,11 @@ const Ngl = () => {
     const getFallbackMessages = () => [
         {
             id: '1',
-            message: "Selamat buat kita semua yang udah bertahan sampai akhir!",
-            subject: 'Perjuangan 3 Tahun',
-            likes: 42,
-            timestamp: "2 jam lalu",
-            category: "inspirasi",
-            emoji: "🎉"
-        },
-        {
-            id: '2',
-            message: "Inget gak pas pertama kali belajar HTML? Sekarang udah bisa bikin project!",
-            subject: 'Kenangan',
-            likes: 38,
-            timestamp: "5 jam lalu",
-            category: "kenangan",
-            emoji: "😅"
-        },
-        {
-            id: '3',
-            message: "Makasih buat teman-teman yang selalu bantu pas aku stuck!",
-            subject: 'Terima Kasih',
-            likes: 56,
-            timestamp: "1 hari lalu",
-            category: "terimakasih",
+            message: "Maap ges server sibuk 😅 coba aja refresh!",
+            subject: 'Server sedang bermasalah!',
+            likes: 0,
+            timestamp: "1 dtk yang lalu",
+            category: "sedih",
             emoji: "🙏"
         }
     ];
@@ -574,7 +642,7 @@ const Ngl = () => {
 
     const renderForm = (isMobile = false) => (
         <div className={`transition-all duration-300 ${showForm ? 'opacity-100' : 'opacity-0'}`}>
-            <div className={`card ${isMobile ? 'p-4' : 'p-6'}`}>
+            <div className={`card ${isMobile ? 'p-4' : 'p-6 min-h-full'}`}>
                 <div className={`flex items-center gap-2 ${isMobile ? 'mb-4' : 'mb-6'}`}>
                     <Send className={`${isMobile ? 'w-4 h-4' : 'w-5 h-5'} text-blue-500`} />
                     <h3 className={`font-bold ${isMobile ? 'text-sm' : 'text-lg'}`}>
@@ -693,9 +761,12 @@ const Ngl = () => {
         const isLiked = likedMessages.has(msg.id);
         const categoryInfo = categories.find(c => c.id === msg.category) || categories[0];
 
+        // Format likes untuk display
+        const displayLikes = formatNumber(msg.likes || 0);
+
         return (
             <div key={msg.id} className="w-full flex-shrink-0 px-2">
-                <div className={`bg-white dark:bg-gray-800 rounded-xl ${isMobile ? 'p-4' : 'p-6'} transition-all duration-300 hover:shadow-lg`}>
+                <div className={`bg-white dark:bg-gray-800 rounded-xl ${isMobile ? 'p-4' : 'p-6 min-h-full'} transition-all duration-300 hover:shadow-lg`}>
                     <div className="flex items-start gap-3 mb-3">
                         <div className={`${isMobile ? 'w-8 h-8' : 'w-12 h-12'} rounded-full bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800 flex items-center justify-center`}>
                             <User className={`${isMobile ? 'w-4 h-4' : 'w-6 h-6'} text-gray-500 dark:text-gray-400`} />
@@ -735,8 +806,8 @@ const Ngl = () => {
                                 title={isLiked ? "Sudah dilike" : "Like pesan ini"}
                             >
                                 <Heart className={`${isMobile ? 'w-3 h-3' : 'w-4 h-4'} ${isLiked ? 'fill-current animate-pulse' : ''}`} />
-                                <span className={`${isMobile ? 'text-xs' : 'text-sm'} ${isLiked ? 'font-bold' : ''}`}>
-                                    {msg.likes || 0}
+                                <span className={`${isMobile ? 'text-xs' : 'text-sm'} ${isLiked ? 'font-bold' : 'font-medium'}`}>
+                                    {displayLikes}
                                 </span>
                             </button>
                         </div>
@@ -884,11 +955,11 @@ const Ngl = () => {
                         <div className="card p-4">
                             <div className="grid grid-cols-3 gap-3 text-center">
                                 <div>
-                                    <div className="text-lg font-bold">{totalStats.totalMessages}</div>
+                                    <div className="text-lg font-bold">{formattedStats.totalMessages}</div>
                                     <div className="text-xs text-gray-500">Pesan</div>
                                 </div>
                                 <div>
-                                    <div className="text-lg font-bold">{totalStats.totalLikes}</div>
+                                    <div className="text-lg font-bold">{formattedStats.totalLikes}</div>
                                     <div className="text-xs text-gray-500">Likes</div>
                                 </div>
                                 <div>
@@ -904,7 +975,7 @@ const Ngl = () => {
                         {renderForm(false)}
 
                         <div>
-                            <div className="card p-6">
+                            <div className="card p-6 min-h-full">
                                 <div className="flex items-center justify-between mb-6">
                                     <div className="flex items-center gap-3">
                                         <div className="p-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg">
@@ -991,11 +1062,11 @@ const Ngl = () => {
                                             <div className="p-4 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-900/30 dark:to-gray-800/30 rounded-lg">
                                                 <div className="grid grid-cols-3 gap-4 text-center">
                                                     <div>
-                                                        <div className="text-lg font-bold">{totalStats.totalMessages}</div>
+                                                        <div className="text-lg font-bold">{formattedStats.totalMessages}</div>
                                                         <div className="text-xs text-gray-500">Total Pesan</div>
                                                     </div>
                                                     <div>
-                                                        <div className="text-lg font-bold">{totalStats.totalLikes}</div>
+                                                        <div className="text-lg font-bold">{formattedStats.totalLikes}</div>
                                                         <div className="text-xs text-gray-500">Total Likes</div>
                                                     </div>
                                                     <div>

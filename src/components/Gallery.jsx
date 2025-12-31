@@ -202,7 +202,7 @@ const Gallery = () => {
     };
 
     return (
-        <section id="gallery" className="section bg-white dark:bg-dark-secondary relative z-10 border-y border-gray-200 dark:border-gray-800 dark:bg-dark">
+        <section id="gallery" className="section bg-white dark:bg-dark-secondary relative border-y border-gray-200 dark:border-gray-800 dark:bg-dark">
             <div className="container">
                 <motion.div
                     className="text-center mb-8 lg:mb-12"
@@ -286,7 +286,7 @@ const Gallery = () => {
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                                         {/* Category Badge */}
-                                        <div className="absolute top-3 left-3 z-10">
+                                        <div className="absolute top-3 left-3">
                                             <span className="px-2 py-1 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm rounded-full text-xs font-medium">
                                                 {categories.find(c => c.id === item.category)?.label}
                                             </span>
@@ -347,14 +347,14 @@ const Gallery = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90"
+                        className="fixed inset-0 flex items-center justify-center p-4 bg-black/90"
                         onClick={closeModal}
                     >
                         <div className="relative max-w-4xl w-full" onClick={e => e.stopPropagation()}>
                             {/* Close Button */}
                             <button
                                 onClick={closeModal}
-                                className="absolute -top-10 right-0 z-10 p-2 text-white hover:text-gray-300"
+                                className="absolute -top-10 right-0 p-2 text-white hover:text-gray-300"
                             >
                                 <X className="w-6 h-6" />
                             </button>
