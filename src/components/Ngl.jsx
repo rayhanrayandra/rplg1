@@ -31,8 +31,13 @@ const Ngl = () => {
     const [rateLimitInfo, setRateLimitInfo] = useState({
         remaining: 5,
         isLimited: false,
-        resetTime: null
+        resetTime: null,
+        resetInMinutes: null
     });
+
+    // State untuk client IP
+    const [clientIp, setClientIp] = useState(null);
+    const [ipLoading, setIpLoading] = useState(true);
 
     // State untuk tracking likes
     const [likedMessages, setLikedMessages] = useState(new Set());
@@ -67,54 +72,131 @@ const Ngl = () => {
         { id: 'auto', label: 'Auto Deteksi', icon: '🔍', color: 'bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30' }
     ];
 
+    // ================ IP DETECTION FUNCTIONS ================
+
+    // Cache IP di localStorage
+    const getCachedIp = () => {
+        try {
+            const cached = localStorage.getItem('ngl_client_ip');
+            if (cached) {
+                const { ip, timestamp } = JSON.parse(cached);
+                // Cache valid selama 12 jam
+                if (Date.now() - timestamp < 43200000) {
+                    console.log('Using cached IP:', ip);
+                    return ip;
+                }
+            }
+        } catch (error) {
+            console.error('Error reading cached IP:', error);
+        }
+        return null;
+    };
+
+    const setCachedIp = (ip) => {
+        try {
+            localStorage.setItem('ngl_client_ip', JSON.stringify({
+                ip,
+                timestamp: Date.now()
+            }));
+        } catch (error) {
+            console.error('Error caching IP:', error);
+        }
+    };
+
+    // Dapatkan IP client dari external service
+    const getClientIp = async () => {
+        setIpLoading(true);
+
+        // Cek cache dulu
+        const cachedIp = getCachedIp();
+        if (cachedIp) {
+            setClientIp(cachedIp);
+            setIpLoading(false);
+            return cachedIp;
+        }
+
+        try {
+            // Coba beberapa service
+            const services = [
+                'https://api.ipify.org?format=json',
+                'https://api64.ipify.org?format=json',
+                'https://ipapi.co/json/'
+            ];
+
+            let ip = null;
+
+            for (const service of services) {
+                try {
+                    const response = await fetch(service, {
+                        signal: AbortSignal.timeout(3000)
+                    });
+
+                    if (response.ok) {
+                        const data = await response.json();
+                        ip = data.ip || data.ip_address;
+                        if (ip && ip !== '::1' && ip !== '127.0.0.1') {
+                            console.log(`Got IP from ${service}:`, ip);
+                            break;
+                        }
+                    }
+                } catch (error) {
+                    console.log(`Service ${service} failed:`, error.message);
+                }
+            }
+
+            // Fallback jika semua service gagal
+            if (!ip) {
+                ip = `dev-${Date.now().toString(36)}-${Math.random().toString(36).substr(2, 5)}`;
+                console.log('Using fallback IP:', ip);
+            }
+
+            // Simpan ke cache dan state
+            setCachedIp(ip);
+            setClientIp(ip);
+            setIpLoading(false);
+            return ip;
+
+        } catch (error) {
+            console.error('Failed to get IP:', error);
+            const fallbackIp = `err-${Date.now().toString(36)}`;
+            setClientIp(fallbackIp);
+            setIpLoading(false);
+            return fallbackIp;
+        }
+    };
+
     // ================ FORMAT NUMBER FUNCTIONS ================
 
-    // Fungsi format angka seperti Instagram
     const formatNumber = (num) => {
         if (typeof num !== 'number') {
-            // Coba konversi ke number jika string
             const parsedNum = parseInt(num) || 0;
             return formatNumber(parsedNum);
         }
 
-        if (num < 1000) {
-            return num.toString(); // Tampilkan biasa jika di bawah 1000
-        }
+        if (num < 1000) return num.toString();
 
         if (num < 10000) {
-            // Untuk angka 1000-9999: 1.2K, 9.5K
             const kValue = (num / 1000).toFixed(1);
-            // Hapus .0 jika ada
             return kValue.endsWith('.0') ? Math.floor(num / 1000) + 'K' : kValue + 'K';
         }
 
-        if (num < 1000000) {
-            // Untuk angka 10.000-999.999: 10K, 999K
-            return Math.floor(num / 1000) + 'K';
-        }
+        if (num < 1000000) return Math.floor(num / 1000) + 'K';
 
         if (num < 10000000) {
-            // Untuk angka 1.000.000-9.999.999: 1.2M, 9.5M
             const mValue = (num / 1000000).toFixed(1);
             return mValue.endsWith('.0') ? Math.floor(num / 1000000) + 'M' : mValue + 'M';
         }
 
-        if (num < 1000000000) {
-            // Untuk angka 10.000.000-999.999.999: 10M, 999M
-            return Math.floor(num / 1000000) + 'M';
-        }
+        if (num < 1000000000) return Math.floor(num / 1000000) + 'M';
 
         if (num < 10000000000) {
-            // Untuk angka 1.000.000.000-9.999.999.999: 1.2B, 9.5B
             const bValue = (num / 1000000000).toFixed(1);
             return bValue.endsWith('.0') ? Math.floor(num / 1000000000) + 'B' : bValue + 'B';
         }
 
-        // Untuk angka di atas 10B
         return Math.floor(num / 1000000000) + 'B';
     };
 
-    // Fungsi untuk parsing string format Instagram ke number
     const parseStringToNumber = (str) => {
         if (typeof str === 'number') return str;
         if (!str) return 0;
@@ -139,7 +221,6 @@ const Ngl = () => {
         return parseInt(str) || 0;
     };
 
-    // Format stats numbers
     const formattedStats = {
         totalMessages: formatNumber(totalStats.totalMessages || 0),
         totalLikes: formatNumber(totalStats.totalLikes || 0)
@@ -147,23 +228,19 @@ const Ngl = () => {
 
     // ================ AUTO-REFRESH SYSTEM ================
 
-    // Setup auto-refresh setiap 30 detik
     const setupAutoRefresh = () => {
-        // Hapus interval sebelumnya jika ada
         if (refreshIntervalRef.current) {
             clearInterval(refreshIntervalRef.current);
         }
 
-        // Setup interval baru setiap 30 detik
         refreshIntervalRef.current = setInterval(() => {
             console.log('🔄 Auto-refresh triggered');
             fetchMessages();
             fetchStats();
             checkRateLimit();
-        }, 30000); // 30 detik
+        }, 30000);
     };
 
-    // Hentikan auto-refresh
     const stopAutoRefresh = () => {
         if (refreshIntervalRef.current) {
             clearInterval(refreshIntervalRef.current);
@@ -309,6 +386,12 @@ const Ngl = () => {
 
     const callEdgeFunction = async (functionName, data = {}) => {
         try {
+            // Pastikan kita punya IP sebelum memanggil API
+            let currentClientIp = clientIp;
+            if (!currentClientIp || ipLoading) {
+                currentClientIp = await getClientIp();
+            }
+
             const response = await fetch(
                 `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/${functionName}`,
                 {
@@ -317,12 +400,16 @@ const Ngl = () => {
                         'Content-Type': 'application/json',
                         'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`
                     },
-                    body: JSON.stringify(data)
+                    body: JSON.stringify({
+                        ...data,
+                        clientIp: currentClientIp // Selalu kirim IP
+                    })
                 }
             );
 
             if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+                const errorText = await response.text();
+                throw new Error(`HTTP ${response.status}: ${errorText}`);
             }
 
             return await response.json();
@@ -377,9 +464,18 @@ const Ngl = () => {
             const result = await callEdgeFunction('check-rate-limit');
             if (result.success) {
                 setRateLimitInfo(result.data);
+            } else {
+                console.error('Rate limit check failed:', result.error);
             }
         } catch (error) {
             console.error('Error checking rate limit:', error);
+            // Set default values jika error
+            setRateLimitInfo({
+                remaining: 5,
+                isLimited: false,
+                resetTime: null,
+                resetInMinutes: null
+            });
         }
     };
 
@@ -389,7 +485,6 @@ const Ngl = () => {
         try {
             const likedMessagesSet = new Set();
 
-            // Coba baca dari localStorage
             const storedLikes = localStorage.getItem('ngl_liked_messages');
 
             if (storedLikes) {
@@ -400,20 +495,17 @@ const Ngl = () => {
                     }
                 } catch (error) {
                     console.error('Error parsing liked messages:', error);
-                    // Jika error parsing, hapus data yang corrupt
                     localStorage.removeItem('ngl_liked_messages');
                 }
             } else {
-                // Coba migrate dari format lama
                 for (let i = 0; i < localStorage.length; i++) {
                     const key = localStorage.key(i);
                     if (key && key.startsWith('ngl_like_')) {
                         const messageId = key.replace('ngl_like_', '');
                         likedMessagesSet.add(messageId);
-                        localStorage.removeItem(key); // Hapus format lama
+                        localStorage.removeItem(key);
                     }
                 }
-                // Simpan ke format baru
                 saveLikedMessages(likedMessagesSet);
             }
 
@@ -440,13 +532,9 @@ const Ngl = () => {
             const newLikedMessages = new Set(likedMessages);
             newLikedMessages.add(messageId);
 
-            // Simpan ke state
             setLikedMessages(newLikedMessages);
-
-            // Simpan ke localStorage
             saveLikedMessages(newLikedMessages);
 
-            // Update UI langsung - konversi ke number jika perlu
             setNglMessages(prev =>
                 prev.map(msg => {
                     if (msg.id === messageId) {
@@ -463,19 +551,16 @@ const Ngl = () => {
                 })
             );
 
-            // Kirim like ke API
             await callEdgeFunction('like-message', { messageId });
 
         } catch (error) {
             console.error('Error liking message:', error);
 
-            // Rollback jika gagal
             const rollbackLikedMessages = new Set(likedMessages);
             rollbackLikedMessages.delete(messageId);
             setLikedMessages(rollbackLikedMessages);
             saveLikedMessages(rollbackLikedMessages);
 
-            // Rollback UI
             setNglMessages(prev =>
                 prev.map(msg => {
                     if (msg.id === messageId) {
@@ -509,7 +594,10 @@ const Ngl = () => {
         }
 
         if (rateLimitInfo.isLimited) {
-            setSubmitMessage(`Limit tercapai. Coba lagi nanti!`);
+            const resetTime = rateLimitInfo.resetInMinutes
+                ? `Coba lagi dalam ${rateLimitInfo.resetInMinutes} menit`
+                : 'Coba lagi nanti';
+            setSubmitMessage(`Limit tercapai. ${resetTime}!`);
             return;
         }
 
@@ -519,6 +607,8 @@ const Ngl = () => {
             const finalCategory = selectedCategory === 'auto'
                 ? detectCategory(formData.message, formData.subject)
                 : selectedCategory;
+
+            console.log('Submitting message with IP:', clientIp);
 
             const result = await callEdgeFunction('submit-message', {
                 message: formData.message.trim(),
@@ -534,6 +624,16 @@ const Ngl = () => {
                 setSelectedCategory('auto');
                 setShowForm(false);
 
+                // Update rate limit info dari response
+                if (result.data?.rateLimit) {
+                    setRateLimitInfo({
+                        remaining: result.data.rateLimit.remaining,
+                        isLimited: result.data.rateLimit.remaining <= 0,
+                        resetTime: result.data.rateLimit.resetTime,
+                        resetInMinutes: 60
+                    });
+                }
+
                 setTimeout(() => {
                     fetchMessages();
                     fetchStats();
@@ -548,7 +648,7 @@ const Ngl = () => {
             } else {
                 switch (result.error) {
                     case 'RATE_LIMIT_EXCEEDED':
-                        setSubmitMessage("Limit pengiriman tercapai. Coba lagi nanti!");
+                        setSubmitMessage(`Limit tercapai. Coba lagi dalam ${result.data?.resetInMinutes || 60} menit!`);
                         checkRateLimit();
                         break;
                     case 'INVALID_CONTENT':
@@ -558,7 +658,7 @@ const Ngl = () => {
                         setSubmitMessage("Pesan terlalu panjang.");
                         break;
                     default:
-                        setSubmitMessage("Oops, ada error. Coba lagi ya!");
+                        setSubmitMessage(result.message || "Oops, ada error. Coba lagi ya!");
                 }
             }
 
@@ -573,26 +673,31 @@ const Ngl = () => {
     // ================ HELPER FUNCTIONS ================
 
     useEffect(() => {
-        // Initial load
-        loadLikedMessages();
-        fetchMessages();
-        fetchStats();
-        checkRateLimit();
+        const initApp = async () => {
+            // Dapatkan IP pertama kali
+            await getClientIp();
 
-        // Start auto slide
-        startAutoSlide();
+            // Load data lainnya
+            loadLikedMessages();
+            fetchMessages();
+            fetchStats();
+            checkRateLimit();
 
-        // Setup auto-refresh setiap 30 detik
-        setupAutoRefresh();
+            // Start auto slide
+            startAutoSlide();
 
-        // Cleanup function
+            // Setup auto-refresh setiap 30 detik
+            setupAutoRefresh();
+        };
+
+        initApp();
+
         return () => {
             stopAutoSlide();
             stopAutoRefresh();
         };
     }, []);
 
-    // Restart auto slide when messages change
     useEffect(() => {
         if (nglMessages.length > 1 && !isCarouselHovered && !isCarouselTouched) {
             startAutoSlide();
@@ -637,6 +742,18 @@ const Ngl = () => {
             emoji: "🙏"
         }
     ];
+
+    const formatResetTime = (resetTime) => {
+        if (!resetTime) return null;
+
+        const now = Date.now();
+        const diffMs = resetTime - now;
+
+        if (diffMs <= 0) return null;
+
+        const minutes = Math.ceil(diffMs / 60000);
+        return minutes;
+    };
 
     // ================ RENDER FUNCTIONS ================
 
@@ -710,15 +827,25 @@ const Ngl = () => {
                         </div>
                     </div>
 
-                    <div className="text-xs text-gray-500 dark:text-gray-400 mt-2">
+                    <div className="text-xs text-gray-500 dark:text-gray-400 mt-2 space-y-1">
                         <div className="flex items-center gap-1">
                             <Shield className="w-3 h-3" />
                             <span>Sisa kuota: {rateLimitInfo.remaining} pesan/jam</span>
                         </div>
                         {rateLimitInfo.isLimited && (
-                            <div className="flex items-center gap-1 text-amber-600 dark:text-amber-400 mt-1">
+                            <div className="flex items-center gap-1 text-amber-600 dark:text-amber-400">
                                 <AlertCircle className="w-3 h-3" />
-                                <span>Limit tercapai. Tunggu 1 jam.</span>
+                                <span>
+                                    {rateLimitInfo.resetInMinutes
+                                        ? `Limit tercapai. Tunggu ${rateLimitInfo.resetInMinutes} menit`
+                                        : 'Limit tercapai. Tunggu 1 jam'}
+                                </span>
+                            </div>
+                        )}
+                        {ipLoading && (
+                            <div className="flex items-center gap-1 text-blue-600 dark:text-blue-400">
+                                <div className="w-3 h-3 border-2 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+                                <span>Mendeteksi IP...</span>
                             </div>
                         )}
                     </div>
@@ -730,7 +857,7 @@ const Ngl = () => {
                         </div>
                         <button
                             type="submit"
-                            disabled={isSubmitting || !formData.message.trim() || rateLimitInfo.isLimited}
+                            disabled={isSubmitting || !formData.message.trim() || rateLimitInfo.isLimited || ipLoading}
                             className={`${isMobile ? 'px-4 py-2 text-sm' : 'px-6 py-3'} bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg font-medium disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 hover:scale-105 active:scale-95`}
                         >
                             {isSubmitting ? (
@@ -740,6 +867,8 @@ const Ngl = () => {
                                 </span>
                             ) : rateLimitInfo.isLimited ? (
                                 'Limit Tercapai ⏳'
+                            ) : ipLoading ? (
+                                'Mendeteksi IP...'
                             ) : isMobile ? 'Kirim 🚀' : 'Kirim Sekarang 🚀'}
                         </button>
                     </div>
@@ -760,8 +889,6 @@ const Ngl = () => {
     const renderMessageItem = (msg, isMobile = false) => {
         const isLiked = likedMessages.has(msg.id);
         const categoryInfo = categories.find(c => c.id === msg.category) || categories[0];
-
-        // Format likes untuk display
         const displayLikes = formatNumber(msg.likes || 0);
 
         return (
@@ -838,7 +965,7 @@ const Ngl = () => {
                             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
                         </div>
                         <p className="text-center mt-4 text-gray-600 dark:text-gray-400">
-                            Memuat pesan...
+                            {ipLoading ? 'Mendeteksi IP...' : 'Memuat pesan...'}
                         </p>
                     </div>
                 </div>
@@ -873,7 +1000,8 @@ const Ngl = () => {
                                 fetchStats();
                                 checkRateLimit();
                             }}
-                            className="px-4 py-2 text-white bg-black dark:bg-gray-800 dark:text-neutral-300 rounded-lg text-sm font-medium transition-colors w-full"
+                            disabled={ipLoading}
+                            className="px-4 py-2 text-white bg-black dark:bg-gray-800 dark:text-neutral-300 rounded-lg text-sm font-medium transition-colors w-full disabled:opacity-50"
                         >
                             🔄 Refresh Pesan
                         </button>
@@ -991,11 +1119,8 @@ const Ngl = () => {
                                                         fetchStats();
                                                         checkRateLimit();
                                                     }}
-                                                    className="
-                                                            ml-2 text-xs
-                                                            text-blue-600 hover:text-blue-700
-                                                            dark:text-blue-400 dark:hover:text-blue-300
-                                                            "
+                                                    disabled={ipLoading}
+                                                    className="ml-2 text-xs text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 disabled:opacity-50"
                                                 >
                                                     Refresh
                                                 </button>
