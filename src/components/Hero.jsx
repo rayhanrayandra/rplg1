@@ -7,6 +7,7 @@ import {
 } from "react-icons/si";
 
 const Hero = () => {
+    /* ================= SCROLL ================= */
     const scrollToSection = (id) => {
         const el = document.getElementById(id);
         if (el) el.scrollIntoView({ behavior: "smooth" });
@@ -29,13 +30,17 @@ const Hero = () => {
         return () => window.removeEventListener("resize", check);
     }, []);
 
-    const marqueeDuration = prefersReducedMotion
-        ? 0
-        : isMobile
-            ? 75
-            : 45;
+    /**
+     * IMPORTANT:
+     * - Reduced motion DIHORMATI di desktop
+     * - Tapi DI-OVERRIDE di mobile (biar marquee tetap hidup)
+     */
+    const disableMotion = prefersReducedMotion && !isMobile;
 
-    /* ================= TECH ================= */
+    const marqueeDuration = isMobile ? 70 : 45;
+    const marqueeDistance = isMobile ? -1600 : -1200; // pixel-based (Safari safe)
+
+    /* ================= TECH STACK ================= */
     const techList = [
         { name: "React", icon: SiReact },
         { name: "Next.js", icon: SiNextdotjs },
@@ -54,9 +59,10 @@ const Hero = () => {
         { name: "Jest", icon: SiJest },
     ];
 
-    const marqueeList = [...techList, ...techList, ...techList, ...techList];
+    // Duplicate for seamless loop
+    const marqueeList = [...techList, ...techList];
 
-    /* ================= ANIMATION ================= */
+    /* ================= TEXT ANIMATION ================= */
     const container = {
         hidden: {},
         visible: { transition: { staggerChildren: 0.18 } },
@@ -76,7 +82,7 @@ const Hero = () => {
             id="home"
             className="relative min-h-screen pt-24 pb-28 flex items-center overflow-hidden"
         >
-            {/* Background */}
+            {/* ================= BACKGROUND ================= */}
             <div className="absolute inset-0 -z-10">
                 <div
                     className="w-full h-full bg-[radial-gradient(circle,_#9999_1px,_transparent_2px)]
@@ -90,7 +96,7 @@ const Hero = () => {
                 />
             </div>
 
-            {/* Content */}
+            {/* ================= CONTENT ================= */}
             <div className="container mx-auto px-6">
                 <motion.div
                     className="max-w-4xl"
@@ -139,7 +145,7 @@ const Hero = () => {
                 </motion.div>
             </div>
 
-            {/* ================= MARQUEE ================= */}
+            {/* ================= MARQUEE (ABSOLUTE) ================= */}
             <div
                 className="absolute bottom-0 left-0 w-full overflow-hidden
         py-1.5 sm:py-3
@@ -147,41 +153,48 @@ const Hero = () => {
         dark:from-black/95 dark:via-black/90 dark:to-black/95
         border-t border-gray-300/30 dark:border-gray-700/30"
             >
-                {/* Fade */}
-                <div className="pointer-events-none absolute left-0 top-0 h-full w-20 sm:w-24
+                {/* Fade edges */}
+                <div className="pointer-events-none absolute left-0 top-0 h-full w-20 sm:w-32
           bg-gradient-to-r from-white/95 dark:from-black/95 to-transparent" />
-                <div className="pointer-events-none absolute right-0 top-0 h-full w-20 sm:w-24
+                <div className="pointer-events-none absolute right-0 top-0 h-full w-20 sm:w-32
           bg-gradient-to-l from-white/95 dark:from-black/95 to-transparent" />
 
+                {/* Track */}
                 <motion.div
                     className="flex items-center w-max will-change-transform"
-                    animate={prefersReducedMotion ? { x: 0 } : { x: ["0%", "-50%"] }}
+                    animate={
+                        disableMotion
+                            ? { x: 0 }
+                            : { x: [0, marqueeDistance] }
+                    }
                     transition={
-                        prefersReducedMotion
+                        disableMotion
                             ? {}
-                            : { duration: marqueeDuration, repeat: Infinity, ease: "linear" }
+                            : {
+                                duration: marqueeDuration,
+                                repeat: Infinity,
+                                ease: "linear",
+                            }
                     }
                 >
                     {marqueeList.map((tech, i) => (
                         <div key={i} className="flex items-center">
                             <div
-                                className={`
-                  flex items-center gap-1.5 sm:gap-2
-                  px-3 sm:px-6
-                  py-1
-                  rounded-md transition
-                  hover:bg-gray-100/50 dark:hover:bg-gray-800/50
-                `}
+                                className="flex items-center gap-1.5 sm:gap-2
+                px-3 sm:px-6 py-0.5 sm:py-1.5
+                rounded-md sm:rounded-lg
+                transition
+                hover:bg-gray-100/50 dark:hover:bg-gray-800/50"
                             >
-                                <tech.icon className="text-xs sm:text-lg text-gray-500 dark:text-gray-400" />
-                                <span className="text-[10px] sm:text-sm font-medium text-gray-600 dark:text-gray-300">
+                                <tech.icon className="text-sm sm:text-lg text-gray-500 dark:text-gray-400" />
+                                <span className="text-[11px] sm:text-sm font-medium text-gray-600 dark:text-gray-300">
                                     {tech.name}
                                 </span>
                             </div>
 
                             {i < marqueeList.length - 1 && (
-                                <div className="px-1.5 sm:px-3">
-                                    <div className="w-px h-2.5 sm:h-4 bg-gray-300/50 dark:bg-gray-600/50" />
+                                <div className="px-2 sm:px-3">
+                                    <div className="w-px h-3 sm:h-4 bg-gray-300/50 dark:bg-gray-600/50" />
                                 </div>
                             )}
                         </div>
