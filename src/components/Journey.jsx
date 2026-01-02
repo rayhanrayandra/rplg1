@@ -190,7 +190,7 @@ const Journey = () => {
                                                     w-full h-48 sm:h-64 object-cover
                                                     dark:brightness-75 dark:contrast-110
                                                     "
-                                            transition={{ duration: 0.4 }}
+                                            transition={{ duration: 1.2 }}
                                         />
 
                                         {/* Vignette – Dark mode only */}
@@ -269,7 +269,7 @@ const Journey = () => {
                     ))}
                 </motion.div>
 
-                <motion.div className="hidden md:block mt-16 pt-8 border-t border-gray-200 dark:border-gray-800 text-center"
+                {/* <motion.div className="hidden md:block mt-16 pt-8 border-t border-gray-200 dark:border-gray-800 text-center"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 1 }}
@@ -284,7 +284,7 @@ const Journey = () => {
                         animate={{ scaleX: [0.5, 1, 0.5] }}
                         transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
                     />
-                </motion.div>
+                </motion.div> */}
             </div>
         </section>
     );
