@@ -22,14 +22,24 @@ const Hero = () => {
                 id="home"
                 className="section relative overflow-hidden pt-20 min-h-screen flex items-center"
             >
-                {/* Background Grid Pattern */}
-                <div className="absolute inset-0 -z-10 opacity-30">
-                    <div className="w-full h-full bg-[linear-gradient(to_right,#555_1px,transparent_1px),linear-gradient(to_bottom,#555_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#999_1px,transparent_1px),linear-gradient(to_bottom,#999_1px,transparent_1px)] bg-[size:40px_40px]" />
+                {/* Background Dot Pattern - Clean dengan opacity rendah */}
+                <div className="absolute inset-0 -z-10">
+                    <div 
+                        className="w-full h-full bg-[radial-gradient(circle,_#9999_1px,_transparent_2px)] 
+                        dark:bg-[radial-gradient(circle,_#333_1px,_transparent_2px)]"
+                        style={{
+                            backgroundSize: '20px 20px',
+                            backgroundPosition: '0 0'
+                        }}
+                    />
+                    
+                    {/* Overlay gradien halus */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/30 to-white/50 
+                        dark:via-black/20 dark:to-black/40" />
                 </div>
 
-
                 <div className="container relative">
-                    <div className="max-w-4xl  center">
+                    <div className="max-w-4xl center">
                         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-thin leading-tight mb-6">
                             <span className="block">Ini cerita kami</span>
                             <span className="block">tentang mimpi, belajar, dan tumbuh.</span>
@@ -53,14 +63,12 @@ const Hero = () => {
                             </button>
                         </div>
                     </div>
-
-
-
                 </div>
             </section>
+            
             <div className="sticky bottom-0 left-0 w-full overflow-hidden py-4 
-                bg-white/60 dark:bg-black/40 backdrop-blur
-                border-y border-gray-400/50 dark:border-gray-600/40">
+                bg-white dark:bg-black
+                border-y border-gray-400/20 dark:border-gray-600/30">
 
                 {/* Fade kiri kanan */}
                 <div className="pointer-events-none absolute left-0 top-0 h-full w-24 

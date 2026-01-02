@@ -124,7 +124,10 @@ const Journey = () => {
 
     return (
         
-        <section id="journey" className="section bg-white dark:bg-dark-secondary relative border-y border-gray-200 dark:border-gray-800" ref={containerRef}>
+        <section id="journey" className="section relative border-y border-gray-200 dark:border-gray-800" ref={containerRef}>
+            <div className="absolute inset-0 -z-10 opacity-30">
+                    <div className="w-full h-full bg-[linear-gradient(to_right,#555_1px,transparent_1px),linear-gradient(to_bottom,#555_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#999_1px,transparent_1px),linear-gradient(to_bottom,#999_1px,transparent_1px)] bg-[size:40px_40px]" />
+                </div>
             <div className="container">
                 <motion.div className="text-center max-w-2xl mx-auto mb-12 md:mb-16"
                     initial={{ opacity: 0, y: 20 }}
