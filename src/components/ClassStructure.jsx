@@ -64,7 +64,7 @@ const ClassStructure = () => {
                         { name: "Gandawa Ripo Rajashiddiq", position: "Anggota", icon: Award, color: "bg-gray-100 dark:bg-gray-800" },
                         { name: "Haris Adrian Pratama", position: "Anggota", icon: Award, color: "bg-gray-100 dark:bg-gray-800" },
                         { name: "Idris Khoidir", position: "Anggota", icon: Award, color: "bg-gray-100 dark:bg-gray-800" },
-                        { name: "Lisna Wati Lase", position: "Anggota", icon: Award, color: "bg-gray-100 dark:bg-gray-800" },
+                        { name: "Lisnawati Lase", position: "Anggota", icon: Award, color: "bg-gray-100 dark:bg-gray-800" },
                         { name: "Loren Valerie", position: "Anggota", icon: Award, color: "bg-gray-100 dark:bg-gray-800" },
                         { name: "Muhammad Dimas Drajat Mangkuwijaya", position: "Anggota", icon: Award, color: "bg-gray-100 dark:bg-gray-800" },
                         { name: "Muhammad Dimas Esa Anugrah", position: "Anggota", icon: Award, color: "bg-gray-100 dark:bg-gray-800" },
@@ -113,7 +113,7 @@ const ClassStructure = () => {
                             color: "bg-purple-100 dark:bg-purple-900/30"
                         },
                         {
-                            name: "Supadil",
+                            name: "Muhammad Supadil",
                             position: "Wakil Ketua Kelas",
                             icon: Users,
                             color: "bg-purple-100 dark:bg-purple-900/30"
@@ -141,7 +141,7 @@ const ClassStructure = () => {
                         { name: "Gandawa Ripo Rajashiddiq", position: "Anggota", icon: Award, color: "bg-gray-100 dark:bg-gray-800" },
                         { name: "Haris Adrian Pratama", position: "Anggota", icon: Award, color: "bg-gray-100 dark:bg-gray-800" },
                         { name: "Idris Khoidir", position: "Anggota", icon: Award, color: "bg-gray-100 dark:bg-gray-800" },
-                        { name: "Lisna Wati Lase", position: "Anggota", icon: Award, color: "bg-gray-100 dark:bg-gray-800" },
+                        { name: "Lisnawati Lase", position: "Anggota", icon: Award, color: "bg-gray-100 dark:bg-gray-800" },
                         { name: "Loren Valerie", position: "Anggota", icon: Award, color: "bg-gray-100 dark:bg-gray-800" },
                         { name: "Muhammad Dimas Drajat Mangkuwijaya", position: "Anggota", icon: Award, color: "bg-gray-100 dark:bg-gray-800" },
                         { name: "Muhammad Dimas Esa Anugrah", position: "Anggota", icon: Award, color: "bg-gray-100 dark:bg-gray-800" },
@@ -191,7 +191,7 @@ const ClassStructure = () => {
                             color: "bg-purple-100 dark:bg-purple-900/30"
                         },
                         {
-                            name: "Supadil",
+                            name: "Muhammad Supadil",
                             position: "Wakil Ketua Kelas",
                             icon: Users,
                             color: "bg-purple-100 dark:bg-purple-900/30"
@@ -220,7 +220,7 @@ const ClassStructure = () => {
                         { name: "Gandawa Ripo Rajashiddiq", position: "Anggota", icon: Award, color: "bg-gray-100 dark:bg-gray-800" },
                         { name: "Haris Adrian Pratama", position: "Anggota", icon: Award, color: "bg-gray-100 dark:bg-gray-800" },
                         { name: "Idris Khoidir", position: "Anggota", icon: Award, color: "bg-gray-100 dark:bg-gray-800" },
-                        { name: "Lisna Wati Lase", position: "Anggota", icon: Award, color: "bg-gray-100 dark:bg-gray-800" },
+                        { name: "Lisnawati Lase", position: "Anggota", icon: Award, color: "bg-gray-100 dark:bg-gray-800" },
                         { name: "Loren Valerie", position: "Anggota", icon: Award, color: "bg-gray-100 dark:bg-gray-800" },
                         { name: "Muhammad Dimas Esa Anugrah", position: "Anggota", icon: Award, color: "bg-gray-100 dark:bg-gray-800" },
                         { name: "Muhammad Surya Fadillah AlMutaqim", position: "Anggota", icon: Award, color: "bg-gray-100 dark:bg-gray-800" },
