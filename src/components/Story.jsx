@@ -56,12 +56,12 @@ const Story = () => {
                             key={index}
                             variants={fadeInUp}
                             transition={{ delay: stat.delay }}
-                            className="text-center p-6 bg-gray-50 dark:bg-gray-900 rounded-xl"
+                            className="text-center p-6 bg-gray-100 dark:bg-gray-800 rounded-xl"
                         >
                             <div className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
                                 {stat.value}
                             </div>
-                            <div className="text-sm text-gray-600 dark:text-gray-400">
+                            <div className="text-sm text-gray-700 dark:text-gray-300">
                                 {stat.label}
                             </div>
                         </motion.div>
@@ -78,9 +78,9 @@ const Story = () => {
                         className="space-y-6"
                     >
                         <motion.div variants={fadeInUp}>
-                            <div className="p-6 bg-gray-50 dark:bg-gray-900 rounded-xl">
+                            <div className="p-6 bg-gray-100 dark:bg-gray-800 rounded-xl">
                                 <div className="flex items-start gap-4 mb-4">
-                                    <div className="p-3 bg-white dark:bg-gray-800 rounded-lg">
+                                    <div className="p-3 bg-gray-100 dark:bg-gray-800 rounded-lg">
                                         <Users className="w-6 h-6 text-gray-700 dark:text-gray-300" />
                                     </div>
                                     <div>
@@ -97,9 +97,9 @@ const Story = () => {
                         </motion.div>
 
                         <motion.div variants={fadeInUp}>
-                            <div className="p-6 bg-gray-50 dark:bg-gray-900 rounded-xl">
+                            <div className="p-6 bg-gray-100 dark:bg-gray-800 rounded-xl">
                                 <div className="flex items-start gap-4 mb-4">
-                                    <div className="p-3 bg-white dark:bg-gray-800 rounded-lg">
+                                    <div className="p-3 bg-gray-100 dark:bg-gray-800 rounded-lg">
                                         <Target className="w-6 h-6 text-gray-700 dark:text-gray-300" />
                                     </div>
                                     <div>
@@ -117,9 +117,9 @@ const Story = () => {
                         </motion.div>
 
                         <motion.div variants={fadeInUp}>
-                            <div className="p-6 bg-gray-50 dark:bg-gray-900 rounded-xl">
+                            <div className="p-6 bg-gray-100 dark:bg-gray-800 rounded-xl">
                                 <div className="flex items-start gap-4 mb-4">
-                                    <div className="p-3 bg-white dark:bg-gray-800 rounded-lg">
+                                    <div className="p-3 bg-gray-100 dark:bg-gray-800 rounded-lg">
                                         <Heart className="w-6 h-6 text-gray-700 dark:text-gray-300" />
                                     </div>
                                     <div>
@@ -144,10 +144,10 @@ const Story = () => {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.6 }}
-                            className="p-6 bg-gray-50 dark:bg-gray-900 rounded-xl"
+                            className="p-6 bg-gray-100 dark:bg-gray-800 rounded-xl"
                         >
                             <div className="flex items-center gap-4 mb-6">
-                                <div className="p-3 bg-white dark:bg-gray-800 rounded-lg">
+                                <div className="p-3 bg-gray-100 dark:bg-gray-800 rounded-lg">
                                     <Briefcase className="w-6 h-6 text-gray-700 dark:text-gray-300" />
                                 </div>
                                 <div>
@@ -200,10 +200,10 @@ const Story = () => {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.6, delay: 0.2 }}
-                            className="p-6 bg-gray-50 dark:bg-gray-900 rounded-xl"
+                            className="p-6 bg-gray-100 dark:bg-gray-800 rounded-xl"
                         >
                             <div className="flex items-center gap-4 mb-6">
-                                <div className="p-3 bg-white dark:bg-gray-800 rounded-lg">
+                                <div className="p-3 bg-gray-100 dark:bg-gray-800 rounded-lg">
                                     <GraduationCap className="w-6 h-6 text-gray-700 dark:text-gray-300" />
                                 </div>
                                 <div>
@@ -251,7 +251,7 @@ const Story = () => {
                     transition={{ delay: 0.4 }}
                     className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800 text-center"
                 >
-                    <div className="inline-flex items-center gap-3 p-3 bg-gray-50 dark:bg-gray-900 rounded-lg">
+                    <div className="inline-flex items-center gap-3 p-3 bg-gray-100 dark:bg-gray-800 rounded-lg">
                         <Code className="w-5 h-5 text-gray-700 dark:text-gray-300" />
                         <p className="text-gray-700 dark:text-gray-300">
                             <span className="font-semibold">Warisan kami:</span> Bukan hanya baris kode, tapi cerita dan keluarga yang tak ternilai
